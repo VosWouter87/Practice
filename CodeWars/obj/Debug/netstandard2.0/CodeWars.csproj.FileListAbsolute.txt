@@ -1,0 +1,9 @@
+D:\projects\Experiment\CodeWars\bin\Debug\netstandard2.0\CodeWars.deps.json
+D:\projects\Experiment\CodeWars\bin\Debug\netstandard2.0\CodeWars.dll
+D:\projects\Experiment\CodeWars\bin\Debug\netstandard2.0\CodeWars.pdb
+D:\projects\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.csprojResolveAssemblyReference.cache
+D:\projects\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.csproj.CoreCompileInputs.cache
+D:\projects\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.AssemblyInfoInputs.cache
+D:\projects\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.AssemblyInfo.cs
+D:\projects\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.dll
+D:\projects\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.pdb
