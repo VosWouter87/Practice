@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Boskalis" Prefix="Boskalis" UpgradeActionIndex="22">
+  <tables>
+    <table Name="ClientContact" PluralName="ClientContacts" Description="ClientContacts" NameProperty="Name">
+      <columns>
+        <column Name="Initials" DataType="Text" Description="Initials" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="FirstName" DataType="Text" Description="FirstName" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LastName" DataType="Text" Description="LastName" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Women" DataType="Boolean" Description="Women" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Active" DataType="Boolean" Description="Active" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Aanhef" DataType="Text" Description="Aanhef" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CountryId" DataType="Link" Description="Country" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Country"/>
+        <column Name="UserId" DataType="Link" Description="UserId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		</columns>
+    </table>
+    <table Name="ExternalPartner" PluralName="ExternalPartners" Description="ExternalPartner tabel" NameProperty="Name">
+      <columns>
+        <column Name="BoskalisExternalPartnerId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Subject" DataType="Text" Description="Note subject" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Type" DataType="Text" Description="Note Type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Text" DataType="Text" Description="Note Text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DocumentId" DataType="Text" Description="DocumentId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="FileId" DataType="Link" Description="File link" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="File" />
+        <column Name="ReportTypeId" DataType="Link" Description="Report type link" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ReportType" />
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Report" DataType="Boolean" Description="Report" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Status" DataType="Phrase" Description="ExternalPartner Status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="InvoiceStatus" />
+        <column Name="ExternalReference" DataType="Text" Description="ExternalReference" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="InternalReference" DataType="Text" Description="InternalReference" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="OrderId" DataType="Link" Description="Order this external partner is linked to" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Order" />
+        <column Name="Ordernumber" DataType="Number" Description="Ordernumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="Project" PluralName="Projects" Description="Projects" NameProperty="Name">
+      <columns>
+        <column Name="Reference1" DataType="Text" Description="Reference1" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Reference2" DataType="Text" Description="Reference2" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <!-- //TODO: remove order.experimentid-->
+        <column Name="City" DataType="Text" Description="City" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	<column Name="CountryId" DataType="Link" Description="Country" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Country" />
+	<column Name="ContactPersonId" DataType="Link" Description="Contact Person" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ClientContact" />
+      </columns>
+    </table>
+    <table Name="Order" PluralName="Orders" Description="Order table" NameProperty="Name">
+      <columns>
+        <column Name="StartDate" DataType="Date" Description="StartDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="EndDate" DataType="Date" Description="EndDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ResponsibleId" DataType="Link" Description="ResponsibleId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BioHazard" DataType="Boolean" Description="BioHazard" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NbrOfDocs" DataType="Number" Description="NbrOfDocs" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ContactPersonId" DataType="Link" Description="Contact Person" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ClientContact" />
+        <column Name="ConceptReport" DataType="Boolean" Description="ConceptReport" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ConceptReportAuthorized" DataType="Boolean" Description="ConceptReportAuthorized" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CommentOnReport" DataType="Text" Description="CommentOnReport" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReportInDutch" DataType="Boolean" Description="ReportInDutch" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Modifiable" DataType="Boolean" Description="Modifiable" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CommentInvoice" DataType="Text" Description="CommentInvoice" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="AdviceInProgress" DataType="Boolean" Description="AdviceInProgress" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+    	<column Name="WaitingInProgress" DataType="Boolean" Description="WaitingInProgress" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="RejectInProgress" DataType="Boolean" Description="RejectInProgress" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Storage" DataType="Phrase" Description="Storage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Phase" DataType="Phrase" Description="Phase" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	  </columns>
+    </table>
+	 <table Name="Invoice" PluralName="Invoices" Description="Order Invoice" NameProperty="InvoiceId">
+      <columns>
+    	<column Name="WaitingInProgress" DataType="Boolean" Description="WaitingInProgress" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+     </columns>
+	  <interfaces>
+        <interface>ICancelable</interface>
+      </interfaces>
+    </table>
+	<table Name="Sample" PluralName="Samples" Description="Sample table" NameProperty="Name">
+      <columns>
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExpiryDate" DataType="Date" Description="ExpiryDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampledByBoskalis" DataType="Boolean" Description="SampledByBoskalis" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="X" DataType="Decimal" Description="X" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Y" DataType="Decimal" Description="Y" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Z" DataType="Decimal" Description="Z" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DepthMin" DataType="Decimal" Description="DepthMin" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DepthMax" DataType="Decimal" Description="DepthMax" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Polluted" DataType="Boolean" Description="Polluted" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LocationId" DataType="Link" Description="Location Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+      </columns>
+    </table>
+    <table Name="Client" PluralName="Clients" Description="Clients" NameProperty="Name">
+      <columns>
+        <column Name="VATcode" DataType="Phrase" Description="VATcode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="InternalCode" DataType="Phrase" Description="InternalCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="VATnumber" DataType="Text" Description="VATnumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="Note" PluralName="Notes" Description="Note tabel" NameProperty="NoteId">
+      <columns>
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Report" DataType="Boolean" Description="Report" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="Test" PluralName="Tests" Description="tests" NameProperty="Name">
+      <columns>
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Waiting" DataType="Boolean" Description="Waiting" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Xmin" DataType="Decimal" Description="Xmin" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Xmax" DataType="Decimal" Description="Xmax" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Xinterval" DataType="Decimal" Description="Xinterval" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Ymin" DataType="Decimal" Description="Ymin" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Ymax" DataType="Decimal" Description="Ymax" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Yinterval" DataType="Decimal" Description="Yinterval" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" /> 
+	  </columns>
+      <interfaces>
+        <interface>IAuthorisable</interface>
+      </interfaces>
+    </table>
+    <table Name="TestType" PluralName="TestTypes" Description="Test type table" NameProperty="Name">
+      <columns>
+        <column Name="FileId" DataType="Link" Description="File link" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="File" />
+        <column Name="ReportInSummary" DataType="Boolean" Description="Report on summary" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReportInAttachment" DataType="Boolean" Description="Report in attachment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="nl" DataType="Text" Description="Dutch text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="en" DataType="Text" Description="English text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	    <column Name="NbrOfLabels" DataType="Number" Description="NbrOfLabels" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SOPName" DataType="Text" Description="SOP-name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+  	    <column Name="XResultTypeId" DataType="Link" Description="X" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ResultType" />
+        <column Name="YResultTypeId" DataType="Link" Description="Y" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ResultType" />
+        <column Name="Xmin" DataType="Decimal" Description="Xmin" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Xmax" DataType="Decimal" Description="Xmax" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Xinterval" DataType="Decimal" Description="Xinterval" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Ymin" DataType="Decimal" Description="Ymin" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Ymax" DataType="Decimal" Description="Ymax" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Yinterval" DataType="Decimal" Description="Yinterval" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="XCalcResultTypeId" DataType="Link" Description="X" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ResultType" />
+        <column Name="YCalcResultTypeId" DataType="Link" Description="Y" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ResultType" />        	 
+		<column Name="GraphInReport" DataType="Boolean" Description="GraphInReport" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />        
+		</columns>
+    </table>
+    <table Name="ResultType" PluralName="ResultTypes" Description="Result type table" NameProperty="Name">
+      <columns>
+        <column Name="ReportInSummary" DataType="Boolean" Description="Report on summary" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReportInAttachment" DataType="Boolean" Description="Report in attachment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ShowInAnalistReport" DataType="Boolean" Description="Report in analist report" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	<column Name="nl" DataType="Text" Description="Dutch text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="en" DataType="Text" Description="English text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="Instrument" PluralName="Instruments" Description="Instruments" NameProperty="Name">
+      <columns>
+        <column Name="GracePeriodBefore" DataType="Date" Description="GracePeriodBefore" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="GracePeriodAfter" DataType="Date" Description="GracePeriodAfter" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CalibrationDate" DataType="Date" Description="CalibrationDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Factor" DataType="Decimal" Description="Factor" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="A" DataType="Decimal" Description="A" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="B" DataType="Decimal" Description="B" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="C" DataType="Decimal" Description="C" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property1" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property2" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property3" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property4" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property5" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property6" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property7" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property8" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property9" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property10" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property11" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property12" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property13" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property14" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Property15" DataType="Decimal" Description="Property" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IHasNotes</interface>
+      </interfaces>
+    </table>
+    <table Name="OrderContact" PluralName="OrderContacts" Description="OrderContacts" NameProperty="BoskalisOrderContactId">
+      <columns>
+        <column Name="BoskalisOrderContactId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="OrderId" DataType="Link" Description="Order" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Order" />
+        <column Name="ClientContactId" DataType="Link" Description="ClientContact" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ClientContact" />
+    </columns>
+      <interfaces />
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>OrderId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+	<table Name="User">
+      <columns>
+        <column   Name="Telephone" DataType="Text" Description="Telephone" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+	<table Name="Invoice" PluralName="Invoices" Description="Order Invoice" NameProperty="InvoiceId">
+		<columns>
+			<column Name="ExternalReference" DataType="Text" Description="ExternalReference" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />    
+			<column Name="Review" DataType="Boolean" Description="Review" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+			<column Name="TotalPriceExclVAT" DataType="Text" Description="Price excluding VAT" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />   	
+		</columns>
+	</table>
+  </tables>
+  <phrases>
+    <phrase Name="ExpectedResult" NoEnumeration="true">
+        <phraseItems>
+            <phraseItem Value="&lt; 63" Text="&lt; 63" NL="&lt; 63" EN="&lt; 63" OrderNumber="1"/>
+            <phraseItem Value="63 - 125" Text="63 - 125" NL="63 - 125" EN="63 - 125" OrderNumber="2"/>
+            <phraseItem Value="125 - 250" Text="125 - 250" NL="125 - 250" EN="125 - 250" OrderNumber="3"/>
+            <phraseItem Value="250 - 500" Text="250 - 500" NL="250 - 500" EN="250 - 500" OrderNumber="4"/>
+            <phraseItem Value="500 - 1000" Text="500 - 1000" NL="500 - 1000" EN="500 - 1000" OrderNumber="5"/>
+            <phraseItem Value="1000 - 2000" Text="1000 - 2000" NL="1000 - 2000" EN="1000 - 2000" OrderNumber="6"/>
+            <phraseItem Value="2000 - 4000" Text="2000 - 4000" NL="2000 - 4000" EN="2000 - 4000" OrderNumber="7"/>
+            <phraseItem Value="&gt; 4000" Text="&gt; 4000" NL="&gt; 4000" EN="&gt; 4000" OrderNumber="8"/>
+        </phraseItems>
+    </phrase>
+  </phrases>
+</schema>

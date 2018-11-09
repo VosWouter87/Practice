@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Cvi" Prefix="Cvi" UpgradeActionIndex="999">
+  <tables>
+    <table Name="Animal">
+      <columns>
+        <column Name="NumberMother" DataType="Text" Description="NumberMother" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NumberTattoo" DataType="Text" Description="NumberTattoo" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NumberIR" DataType="Text" Description="NumberIR" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DateOfBirth" DataType="Date" Description="DateOfBirth" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DateOfBirthText" DataType="Text" Description="DateOfBirthText" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NumberExtra" DataType="Text" Description="NumberExtra" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Origin" DataType="Text" Description="Origin" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="(default)" />
+        <column Name="Status" DataType="Text" Description="Status" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="(default)" />
+        <column Name="DateOfEntry" DataType="Date" Description="DateOfEntry" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DateOfExit" DataType="Date" Description="DateOfExit" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Destination" DataType="Phrase" Description="Destination" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="AnimalDestination" />
+		<column Name="OrderNumber" DataType="Number" Description="OrderNumber" IsPrimaryKey="false" AllowNull="true" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Group" DataType="Text" Description="Group" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes />
+    </table>
+    <table Name="Experiment">
+      <columns>
+        <column Name="ClientName" DataType="Text" Description="ClientName" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ClientEmail" DataType="Text" Description="ClientEmail" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReportRetrieved" DataType="Boolean" Description="ReportRetrieved" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ProefNummer" DataType="Text" Description="ProefNummer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Department" DataType="Text" Description="Department" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="QualityOnlineLink" DataType="Text" Description="QualityOnlineLink" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ProjectLeader" DataType="Text" Description="ProjectLeader" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes />
+    </table>
+    <table Name="FormTemplate">
+      <columns>
+        <column Name="FormNumber" DataType="Text" Description="FormNumber for QC" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="FormVersion" DataType="Text" Description="FormVersion for QC" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes />
+    </table>
+    <table Name="PhraseItem">
+      <columns>
+        <column Name="DisplayText" DataType="Text" Description="DisplayText" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes />
+    </table>
+    <table Name="Container">
+      <columns>
+      <!--  20160113: ES: LS-7162 - Container should have field ExperimentId, without prefix -prefix="Cvi" -->
+        <column Name="ExperimentId" DataType="Link" Description="Project" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" DefaultValue="(default)"/>
+      </columns>
+       <!--  20160113: ES: LS-7162 - Container should have field ExperimentId, without prefix -prefix="Cvi" -->
+      <!-- <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>ExperimentId</string>
+          </Columns>
+        </index>
+      </indexes> -->
+    </table>
+    <table Name="ScheduleItem">
+      <columns>
+        <column Name="SubprojectNumber" DataType="Text" Description="SubprojectNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CalculationNumber" DataType="Text" Description="CalculationNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MyProjectNumber" DataType="Text" Description="MyProjectNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Containmentlevel" DataType="Phrase" Description="Containmentlevel" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LocationContainmentlevel" />
+      </columns>
+      <indexes />
+    </table>
+    <table Name="Location">
+      <columns>
+        <column Name="Containmentlevel" DataType="Phrase" Description="Containmentlevel" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LocationContainmentlevel" />
+        <column Name="AvailableSurface" DataType="Decimal" Description="AvailableSurface" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Surface" DataType="Decimal" Description="Surface" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes />
+    </table>
+	<table Name="LocationType">
+      <columns>
+		<column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+	</table>
+    <table Name="QuotationLocation">
+      <columns>
+        <column Name="ContainmentLevel" DataType="Text" Description="Containment level" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ContainmentLevelRealized" DataType="Phrase" Description="Containment level realized" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LocationContainmentlevel" />
+		<column Name="TotalDays" DataType="Number" Description="TotalDays" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+	<table Name="Quotation">
+	  <columns>
+        <column Name="Duration" DataType="Number" Description="Duration" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReferenceText" DataType="Text" Description="ReferenceText" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="DiscountRemarks" DataType="Text" Description="DiscountRemarks" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="NumberTestPlan" DataType="Text" Description="NumberTestPlan" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="QuotationItem">
+      <columns>
+        <column Name="ProjectDuration" DataType="Decimal" Description="ProjectDuration" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="PriceOverride" DataType="Decimal" Description="Price (Override)" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AdditionalPriceOverride" DataType="Decimal" Description="Additional Price (Override)" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CostsOverride" DataType="Decimal" Description="Costs (Override)" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AdditionalCostsOverride" DataType="Decimal" Description="Additional Costs (Override)" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <!-- 20160119: HM: LS-7183 Rename PriceListCategory to Article -->
+	<table Name="Article">
+	  <columns>
+		<column Name="AnimalType" DataType="Phrase" Description="Animal Type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="AnimalType" />
+       	<column Name="QuotationItemTypeId" DataType="Link" Description="QuotationItemTypeId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="QuotationItemType" />
+		<column Name="NumberOfItems" DataType="Number" Description="number of items" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  DefaultValue="1" />
+		<column Name="NumberOfReplications" DataType="Number" Description="number of replications" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  DefaultValue="1" />
+		<column Name="NumberOfPersons" DataType="Number" Description="number of persons" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  DefaultValue="1" />
+		<column Name="Duration" DataType="Number" Description="duration" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  DefaultValue="1" /> 
+      </columns>
+	  <interfaces>
+        <interface>IDeletable</interface>
+		<interface>ITypeBased</interface>
+      </interfaces>
+	  
+    </table>
+	<table Name="ArticleType">
+      <columns>
+        <column Name="NumberOfItems" DataType="Number" Description="number of items" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  DefaultValue="1" />
+		<column Name="NumberOfReplications" DataType="Number" Description="number of replications" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  DefaultValue="1" />
+		<column Name="NumberOfPersons" DataType="Number" Description="number of persons" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  DefaultValue="1" />
+		<column Name="Duration" DataType="Number" Description="duration" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  DefaultValue="1" />
+		<column Name="AnimalType" DataType="Phrase" Description="Animal Type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="AnimalType" />
+		<column Name="Type" DataType="Text" Description="Type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="RoleId" DataType="Link" Description="Role" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Role" />
+		<column Name="LocationTypeId" DataType="Link" Description="LocationType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="LocationType" />
+      </columns>
+	  <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>RoleId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>LocationTypeId</string>
+          </Columns>
+        </index>
+      </indexes>
+	</table>
+	
+	<table Name="Role">
+	  <interfaces>
+        <interface>IArticleItem</interface>
+      </interfaces>
+    </table>	
+  </tables>
+  <phrases>
+    <phrase Name="AnimalDestination">
+      <phraseItems>
+        <phraseItem Value="DeathBeforeStart" Text="Death before start" />
+        <phraseItem Value="DeathDuring" Text="Death during" />
+        <phraseItem Value="DeathAtEnd" Text="Death at end" />
+        <phraseItem Value="Alive" Text="Alive" />
+        <phraseItem Value="AliveOtherOrganisation" Text="Alive other organisation" />
+        <phraseItem Value="AliveRegNL" Text="Alive reg NL" />
+        <phraseItem Value="AliveRegEU" Text="Alive reg EU" />
+        <phraseItem Value="AliveOther" Text="Alive other" />
+      </phraseItems>
+    </phrase>
+    <phrase Name="LocationContainmentlevel">
+      <phraseItems>
+        <phraseItem Value="BSL2" Text="BSL2" />
+        <phraseItem Value="BSL3" Text="BSL3" />
+		<phraseItem Value="BSL3plus" Text="BSL3plus" />
+		<phraseItem Value="Conventioneel" Text="Conventioneel" />
+		<phraseItem Value="Klimaat" Text="Klimaat" />
+		<phraseItem Value="Operatiekamer" Text="Operatiekamer" />
+		<phraseItem Value="HCU" Text="HCU" />
+		<phraseItem Value="hBSL4" Text="hBSL4" />
+      </phraseItems>
+    </phrase>
+  </phrases>
+</schema>

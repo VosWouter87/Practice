@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Nizo" Prefix="Nizo" UpgradeActionIndex="23">
+  <tables>
+    <table Name="Client">
+      <columns>
+        <column Name="Code" DataType="Text" Description="Code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="NizoName" DataType="Text" Description="NizoName" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="Project">
+      <columns>
+        <column Name="ClientId" DataType="Link" Description="ClientName" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+        <column Name="ClientContactId" DataType="Link" Description="ClientContact" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ClientContact" />
+        <column Name="ShipmentClientContactId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ClientContact" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>ClientContactId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ShipmentClientContactId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="Material">
+      <columns>
+        <column Name="SupplierBatchcode" DataType="Text" Description="Batchcode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Restmaterial" DataType="Phrase" Description="Restmaterial" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExpireDate" DataType="Date" Description="ExpireDate" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExpectedExpireDate" DataType="Date" Description="ExpectedExpireDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PackingForm" DataType="Phrase" Description="PackingForm" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExpectedPackingForm" DataType="Phrase" Description="ExpectedPackingForm" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StorageCondition" DataType="Phrase" Description="StorageCondition" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExpectedStorageCondition" DataType="Phrase" Description="ExpectedStorageCondition" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DeliveryDate" DataType="Date" Description="DeliveryDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExpectedDeliveryDate" DataType="Date" Description="ExpectedDeliveryDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="GetDate()" />
+        <column Name="ExpectedAmount" DataType="Decimal" Description="ExpectedAmount" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="UsedDate" DataType="Date" Description="UsedDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExpectedUnitId" DataType="Link" Description="UnitId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Unit" />
+        <column Name="ReceivedUserId" DataType="Link" Description="Received User" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="AuthorizedUserId" DataType="Link" Description="Authorized User" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="WeighById" DataType="Link" Description="The user who weigh the material" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		<column Name="LabelAmount" DataType="Number" Description="LabelAmount" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column  Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+	  </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>ExpectedUnitId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ReceivedUserId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>AuthorizedUserId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>WeighById</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="BatchType">
+      <columns>
+        <column Name="PackingForm" DataType="Phrase" Description="PackingForm" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StorageCondition" DataType="Phrase" Description="StorageCondition" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>LocationId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="Batch">
+      <columns>
+        <column Name="ExpireDate" DataType="Date" Description="AmountOfPallets" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PackingForm" DataType="Phrase" Description="PackingForm" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StorageCondition" DataType="Phrase" Description="StorageCondition" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="WeighById" DataType="Link" Description="User who weigh the batch" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>WeighById</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="ProductUnit" PluralName="ProductUnits" Description="ProductUnitTypes" NameProperty="Name">
+      <columns>
+        <column Name="ReferenceNumber" DataType="Text" Description="ReferenceNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column  Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+      </columns>
+    </table>
+	<table Name="Product">
+		<columns>
+			<column Name="LabelAmount" DataType="Number" Description="LabelAmount" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		</columns>
+	</table>
+    <table Name="MaterialType">
+      <columns>
+        <column  Name="ParentMaterialTypeId" DataType="Link" Description="Parent materialtype" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="MaterialType" />
+		<column Name="StorageCondition" DataType="Phrase" Description="StorageCondition" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="PackingForm" DataType="Phrase" Description="PackingForm" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="ArticleNumber" DataType="Text" Description="ArticleNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="MaterialTypeGroupId" DataType="Link" Description="MaterialTypeGroup" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Nizo.MaterialTypeGroup" />    
+      </columns>
+    </table>
+	<table Name="MaterialTypeGroup" PluralName="MaterialTypeGroups" Description="MaterialTypeGroup" NameProperty="Name">
+      <columns>
+        <column Name="MaterialTypeGroupId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name of the MaterialTypeGroup" IsPrimaryKey="false" AllowNull="false" IsUnique="true" Size="450" IsDiscriminator="false" IsIdentity="false" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description of the MaterialTypeGroup" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces />
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+      </indexes>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+  </tables>
+</schema>

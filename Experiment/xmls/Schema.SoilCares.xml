@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Id>Schema.Soilcares</Id>
+  <Type>Schema</Type>
+  <ConfigurationName>Soilcares</ConfigurationName>
+  <Description>Soilcares schema</Description>
+  <FrameworkVersion>v4.0</FrameworkVersion>
+  <Tags>Soilcares schema</Tags>
+</Project>

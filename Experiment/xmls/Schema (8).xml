@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="vc" Prefix="vc">
+  <tables>
+    <table Name="EntitySpecification" PluralName="EntitySpecifications" Description="Entity Specification table" NameProperty="Name">
+      <columns>
+        <column Name="ClientId" DataType="Link" Description="Parent client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+      </columns>
+    </table>
+    <table Name="TestType" PluralName="TestTypes" Description="Test type table" NameProperty="Name">
+      <columns>
+        <column Name="ClientId" DataType="Link" Description="Parent client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+        <column Name="LaboratoryId" DataType="Link" Description="External lab" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Laboratory" />
+       <column Name="InstrumentTypeId" DataType="Link" Description="InstrumentType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="InstrumentType" />
+        <column Name="DurationInstrument" DataType="Decimal" Description="Hours required on instrument" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+	<column Name="DurationHuman" DataType="Decimal" Description="Hours required by labengineer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+	<column Name="TestCategory" DataType="Phrase" Description="Caterogory of test" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+     </columns>
+    </table>
+     
+     <table Name="SampleTypeTestType" PluralName="TestTypes" Description="Test type table" NameProperty="Name">
+      <columns>
+		<column Name="OrderNumber" DataType="Number" Description="OrderNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+       </columns>
+    </table>
+    <table Name="Project">
+      <columns>
+        <column Name="ClientId" DataType="Link" Description="Parent client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+      </columns>
+    </table>
+    <table Name="Client">
+      <columns>
+        <column Name="RetentionTime" DataType="Decimal" Description="Retention time" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+      </columns>
+    </table>
+     <table Name="Test">
+      <columns>
+       <column Name="ClientId" DataType="Link" Description="Extern lab used for test" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />            
+       <column Name="SentToExternLab" DataType="Boolean" Description="Test requirement sent to lab" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+       <column Name="DateSentToExternLab" DataType="Date" Description="Date Test requirement sent to lab" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+      <column Name="Remark" DataType="Text" Description="Remark" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+    </columns>
+	<interfaces>
+		<interface>IAuthorisable</interface>
+	    </interfaces>
+    </table>
+    <table Name="Sample">
+      <columns>
+       <column Name="ProductUnitId" DataType="Link" Description="ProductUnit used for sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ProductUnit" />
+       <column Name="Location" DataType="Text" Description="Sample location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="BatchNumber" DataType="Text" Description="BatchNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        
+      </columns>
+      	  <interfaces>
+        <interface>IReceivable</interface>
+	  </interfaces>
+    </table>
+       <table Name="Product">
+        <columns>
+	<column Name="ArticlelId" DataType="Text" Description="Article Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	<column Name="ArticleVersion" DataType="Text" Description="Article Version" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	<column Name="ProjectDVPId" DataType="Link" Description="Project DVP" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="SampleType"/> 
+	</columns>
+    </table>
+    <table Name="Instrument">
+      <columns>
+       <column Name="GracePeriodCalibration" DataType="Number" Description="GracePeriod in days before and after next Calibration date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+       <column Name="GracePeriodMaintenance" DataType="Number" Description="GracePeriod in days before and after next Maintenance date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+    </columns>
+    </table>
+     <table Name="Laboratory">
+      <columns>
+        <column Name="ClientId" DataType="Link" Description="External lab" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+     </columns>
+    </table>
+    <table Name="Order">
+	<columns>
+		<column Name="ReturnToRequester" DataType="Boolean" Description="ReturnToRequester" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="OrderInformation" DataType="Text" Description="OrderInformation" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />	
+    <column Name="OrderRequestType" DataType="Phrase" Description="OrderRequestType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />	
+    <column Name="WBSO" DataType="Boolean" Description="WBSO" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />	
+    <column Name="Remark" DataType="Text" Description="Remark" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />	
+	</columns>
+      <interfaces>
+        <interface>IAuthorisable</interface>
+      </interfaces>
+    </table>
+      <table   Name="SampleTypeLaboratory" PluralName="SampleTypeLaboratorys" Description="SampleTypeLaboratory" NameProperty="SampleTypeLaboratoryId">
+      <columns>
+        <column Name="SampleTypeLaboratoryId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="SampleTypeId" DataType="Link" Description="SampleType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="SampleType" />
+        <column Name="LaboratoryId" DataType="Link" Description="Laboratory" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+      </columns>
+       <interfaces>
+        <interface>IDeletable</interface>
+         <interface>IAuthorisable</interface>
+	  </interfaces>
+    </table>
+    <table   Name="CuttingDie" PluralName="CuttingDies" Description="CuttingDie" NameProperty="Name">
+      <columns>
+        <column Name="CuttingDieId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Surface" DataType="Decimal" Description="NumberOfAnimals" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Length" DataType="Decimal" Description="NumberOfAnimals" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Width" DataType="Decimal" Description="NumberOfAnimals" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Shape" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+</columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="SampleType" PluralName="TestTypes" Description="Test type table" NameProperty="Name">
+      <columns>
+        <column Name="ProductTypeId" DataType="Link" Description="Product Type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ProductType"/>
+        <column Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client"/>
+        <column Name="MES" DataType="Text" Description="MES" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="Direction" DataType="Phrase" Description="Cut direction" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="Surface" DataType="Decimal" Description="Sample Surface (m2)" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="Volume" DataType="Decimal" Description="Sample Volume (m3)" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="Length" DataType="Decimal" Description="Sample Length (mm)" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="Width" DataType="Decimal" Description="Sample Width (mm)" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="Shape" DataType="Phrase" Description="Sample shape" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="AttachmentInstruction" DataType="Phrase" Description="Instruction on barcode attachment to sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="Code" DataType="Text" Description="Code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="Instruction" DataType="Text" Description="Instruction" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="InstructionOnLabel" DataType="Text" Description="Instruction" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="CuttingDieId" DataType="Link" Description="Cutting die" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="vc.CuttingDie" />
+      </columns>
+    </table>
+  </tables>
+</schema>

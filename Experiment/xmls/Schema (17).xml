@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Triskelion" Prefix="Triskelion" UpgradeActionIndex="22">
+  <tables>
+
+    <table Name="Project">
+      <columns>
+        <column Name="ParentProjectId" DataType="Link" Description="Parent Project" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Project" />
+      </columns>
+    </table>
+
+    <table Name="Test">
+      <columns>
+        <column Name="ContainerId" DataType="Link" Description="Container" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Container" />
+        <column Name="DueDate" DataType="Date" Description="DueDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IAuthorisable</interface>
+      </interfaces>
+    </table>
+
+    <table Name="SequenceSample" PluralName="SequenceSamples" Description="SequenceSamples" NameProperty="Name">
+      <columns>
+        <column Name="ContainerId" DataType="Link" Description="Container" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Container" />
+      </columns>
+    </table>
+
+    <table Name="TestType" PluralName="TestTypes" Description="Test type table" NameProperty="Name">
+      <columns>
+        <column Name="ReportInSummary" DataType="Boolean" Description="Report on summary" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReportInAttachment" DataType="Boolean" Description="Report in attachment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SOPName" DataType="Text" Description="SOP-name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Technique" DataType="Text" Description="Technique" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="ResultType" PluralName="ResultTypes" Description="Result type table" NameProperty="Name">
+      <columns>
+        <column Name="ReportInSummary" DataType="Boolean" Description="Report on summary" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReportInAttachment" DataType="Boolean" Description="Report in attachment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReportInExportSequenceToExcel" DataType="Boolean" Description="Report in ExportSequenceToExcel" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="1" />
+      </columns>
+    </table>
+    <table Name="Note" PluralName="Notes" Description="Note tabel" NameProperty="NoteId">
+      <columns>
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Report" DataType="Boolean" Description="Report" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="User">
+      <columns>
+        <column   Name="Telephone" DataType="Text" Description="Telephone" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="ClientContact">
+      <columns>
+        <column   Name="Initials" DataType="Text" Description="Initials" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column   Name="Title" DataType="Phrase" Description="Title" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column   Name="Gender" DataType="Phrase" Description="Gender" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="Gender" />
+      </columns>
+    </table>
+    <table Name="Order" PluralName="Orders" Description="Order table" NameProperty="Name">
+      <columns>
+        <column Name="ResponsibleId" DataType="Link" Description="ResponsibleId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NbrOfDocs" DataType="Number" Description="NbrOfDocs" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CommentOnReport" DataType="Text" Description="CommentOnReport" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReportInDutch" DataType="Boolean" Description="ReportInDutch" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExternalId" DataType="Text" Description="ExternalId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampledBy" DataType="Phrase" Description="SampledBy" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="HazardInformation" DataType="Phrase" Description="HazardInformation" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StorageTerm" DataType="Phrase" Description="StorageTerm" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StorageCondition" DataType="Phrase" Description="StorageCondition" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PackageId" DataType="Link" Description="PackageId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Triskelion.Package" />
+        <column Name="InternalId" DataType="Text" Description="ExternalId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DueDate" DataType="Date" Description="DueDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IAuthorisable</interface>
+        <interface>IReviewable</interface>
+      </interfaces>
+    </table>
+    <table Name="Sample" PluralName="Samples" Description="Sample table" NameProperty="Name">
+      <columns>
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+        <column Name="OffsetSamplingDay" DataType="Number" Description="Offset day when sampling takes place" DefaultValue="0" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AnimalCode" DataType="Text" Description="Animal Code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AnimalGender" DataType="Phrase" Description="Animal Gender" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="Gender" />
+        <column Name="AnimalGroupCode" DataType="Text" Description="AnimalGroup Code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StorageTerm" DataType="Phrase" Description="StorageTerm" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StorageCondition" DataType="Phrase" Description="StorageCondition" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Safety" DataType="Phrase" Description="Safety" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="RawDataLocation" DataType="Phrase" Description="RawDataLocation" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExternalId" DataType="Text" Description="ExternalId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MaterialId" DataType="Link" Description="Material" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Material" />
+        <column Name="DueDate" DataType="Date" Description="DueDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Retest" DataType="Boolean" Description="Retest" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+        <column Name="RetestReason" DataType="Phrase" Description="Retest Reason" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="RetestReason" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>LocationId</string>
+          </Columns>
+        </index>
+      </indexes>
+      <interfaces>
+        <interface>IReceivable</interface>
+      </interfaces>
+    </table>
+    <table Name="Chemical" PluralName="Chemicals" Description="Chemicals" NameProperty="Name">
+      <columns>
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+        <column Name="ExperimentId" DataType="Link" Description="Experiment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />
+        <column Name="MaterialTypeId" DataType="Link" Description="MaterialType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="MaterialType" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>LocationId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ExperimentId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+
+    <table Name="Experiment" PluralName="Experiments" Description="Experiments" NameProperty="Name">
+      <columns>
+        <column Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+        <column Name="GLP" DataType="Boolean" Description="GLP" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Expertise" DataType="Phrase" Description="Experiment expertise" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="Expertise" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>ClientId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+
+    <table Name="Instrument" PluralName="Instruments" Description="Instruments" NameProperty="Name">
+      <columns>
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+        <column Name="GracePeriodBefore" DataType="Date" Description="GracePeriodBefore" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="GracePeriodAfter" DataType="Date" Description="GracePeriodAfter" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="InstrumentType" PluralName="InstrumentTypes" Description="InstrumentTypes" NameProperty="Name">
+      <columns>
+        <column Name="OutillageInstrument" DataType="Text" Description="Outillage instrument" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="Container">
+      <columns>
+        <column Name="Weight" DataType="Decimal" Description="Weight" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Temperature" DataType="Decimal" Description="Temperature" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Appearance" DataType="Text" Description="Appearance" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Volume" DataType="Decimal" Description="Appearance" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+        <column Name="ShelfDate" DataType="Date" Description="ShelfDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StorageTerm" DataType="Number" Description="StorageTerm" IsPrimaryKey="false" AllowNull="false" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+        <interface>ICancelable</interface>
+        <interface>IStatus</interface>
+        <interface>IReceivable</interface>
+      </interfaces>
+    </table>
+
+    <table Name="Package" PluralName="Packages" Description="Package table" NameProperty="Name">
+      <columns>
+        <column Name="PackageId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ClientId" DataType="Link" Description="Client link" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+        <column Name="Courier" DataType="Phrase" Description="Courier" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="Courier" />
+        <column Name="Status" DataType="Phrase" Description="Status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="PackageStatus" />
+        <column Name="Appearance" DataType="Phrase" Description="Appearance" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="Appearance" />
+        <column Name="ExternalReference" DataType="Text" Description="ExternalReference" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+        <interface>ICancelable</interface>
+        <interface>IStatus</interface>
+        <interface>IReceivable</interface>
+      </interfaces>
+    </table>
+    <table Name="Material">
+      <columns>
+        <column Name="ResponsibleId" DataType="Link" Description="ResponsibleId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="SupplierId" DataType="Link" Description="Supplier" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="Supplier" ReferenceTypeName="Client" />
+        <column Name="LotNumber" DataType="Text" Description="Lot Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CatNumber" DataType="Text" Description="Cat Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Concentration" DataType="Decimal" Description="Concentration" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ConcentrationUnitId" DataType="Link" Description="Concentration Unit" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Unit" />
+        <column Name="ExpiryDate" DataType="Date" Description="Expiry date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StorageConditions" DataType="Text" Description="Storage Conditions" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="AccreditationSampleTypeTestType" PluralName="AccreditationSampleTypeTestTypes" Description="Accreditation SampleTypesTestTypes" NameProperty="AccreditationSampleTypeTestTypeId">
+      <columns>
+        <column Name="AccreditationSampleTypeTestTypeId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="AccreditationId" DataType="Link" Description="Accreditation" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Accreditation" />
+        <column Name="SampleTypeId" DataType="Link" Description="SampleType" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="SampleType" />
+        <column Name="TestTypeId" DataType="Link" Description="Test type" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="TestType" />
+        <column Name="LaboratoryId" DataType="Link" Description="Laboratory" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Laboratory" />
+        <!-- 20151008: NC: LS-6314: Added ResultType-->
+        <column Name="ResultTypeId" DataType="Link" Description="ResultType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ResultType" />
+      </columns>
+      <interfaces>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>AccreditationId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>SampleTypeId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>TestTypeId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>LaboratoryId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ResultTypeId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="SequenceType">
+      <columns>
+        <column Name="GroupId" DataType="Link" Description="Group" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Group" />
+      </columns>
+    </table>
+
+    <table Name="Sequence">
+      <columns>
+      </columns>
+      <interfaces>
+        <interface>IAuthorisable</interface>
+      </interfaces>
+    </table>
+
+    <phrases>
+      <phrase Name="Gender">
+        <phraseItems>
+          <phraseItem Value="Male" Text="Male" NL="Man" />
+          <phraseItem Value="Female" Text="Female" NL="Vrouw" />
+          <phraseItem Value="Neutral" Text="Neutral" NL="Onzijdig" />
+        </phraseItems>
+      </phrase>
+      <phrase Name="InstrumentModule" NoEnumeration="true">
+        <phraseItems>
+          <phraseItem Value="iVention.Triskelion.Windows.Instruments.ICPMS_Instrument" Text="Triskelion-ICPMS" NL="Triskelion-ICPMS" EN="Triskelion-ICPMS" />
+        </phraseItems>
+      </phrase>
+      <phrase Name="RetestReason">
+        <phraseItems>
+          <phraseItem Value="QC fail" Text="QC fail" NL="QC fail" />
+          <phraseItem Value="RSD fail" Text="RSD fail" NL="RSD fail" />
+          <phraseItem Value="Other" Text="Other" NL="Other" />
+        </phraseItems>
+      </phrase>
+    </phrases>
+  </tables>
+</schema>

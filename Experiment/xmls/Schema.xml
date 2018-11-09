@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Prefix="iv" Name="iVention" UpgradeActionIndex="27">
+  <tables>
+    <table Name="Transformer" PluralName="Transformers" Description="Transformer" NameProperty="Name">
+      <columns>
+        <column Name="TransformerId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name of the Container Type" IsPrimaryKey="false" AllowNull="false" IsUnique="true" Size="450" IsDiscriminator="false" IsIdentity="false" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description of the Container" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Serial" DataType="Text" Description="Serial" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="OrderNr" DataType="Text" Description="OrderNr" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ProductionOrder" DataType="Text" Description="ProductionOrder" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Type" DataType="Phrase" Description="Type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Design" DataType="Phrase" Description="Design" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ManufacturingDate" DataType="Date" Description="ManufacturingDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PrimaryVoltage" DataType="Decimal" Description="Primary voltage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SecondaryVoltage" DataType="Decimal" Description="Secondary voltage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TertiaryVoltage" DataType="Decimal" Description="Tertiary voltage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Power" DataType="Decimal" Description="Power" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Cooling" DataType="Phrase" Description="Cooling" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Heater" DataType="Phrase" Description="Heater" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Dryer" DataType="Phrase" Description="Dryer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BuchholzRelais" DataType="Phrase" Description="BuchholzRelais" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NiveauRelais" DataType="Phrase" Description="NiveauRelais" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ThermometerContact" DataType="Phrase" Description="ThermometerContact" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Junctionbox" DataType="Phrase" Description="Junctionbox" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Reference" DataType="Text" Description="Reference" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="City" DataType="Phrase" Description="City" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CityCode" DataType="Phrase" Description="CityCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Location" DataType="Text" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="IsolationLiquid" DataType="Phrase" Description="IsolationLiquid" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ClientId" DataType="Link" Description="Client of Project" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+      </indexes>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="TransformerClient" PluralName="TransformerClients" Description="TransformerClients" NameProperty="TransformerClientId">
+      <columns>
+        <column Name="TransformerClientId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="TransformerId" DataType="Link" Description="Transformer" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.Transformer" />
+        <column Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>TransformerId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ClientId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="RegulatorSwitch" PluralName="RegulatorSwitches" Description="RegulatorSwitch" NameProperty="Name">
+      <columns>
+        <column Name="RegulatorSwitchId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name of the Container Type" IsPrimaryKey="false" AllowNull="false" IsUnique="true" Size="450" IsDiscriminator="false" IsIdentity="false" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description of the Container" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TransformerId" DataType="Link" Description="Transformer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.Transformer" />
+        <column Name="Type" DataType="Phrase" Description="Type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Manufacturer" DataType="Phrase" Description="Manufacturer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ManufacturingDate" DataType="Date" Description="ManufacturingDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Design" DataType="Phrase" Description="Design" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Weight" DataType="Decimal" Description="Weight" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Voltage" DataType="Decimal" Description="Voltage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Power" DataType="Decimal" Description="Power" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Engine" DataType="Phrase" Description="Engine" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MountingSide" DataType="Phrase" Description="MountingSide" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Contacts" DataType="Phrase" Description="Contacts" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Diameter" DataType="Decimal" Description="Diameter" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Width" DataType="Decimal" Description="Width" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Packing" DataType="Phrase" Description="Packing" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LiftingMethod" DataType="Phrase" Description="LiftingMethod" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="IsolationLiquid" DataType="Phrase" Description="IsolationLiquid" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+      </indexes>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="ElectricalObject" PluralName="ElectricalObjects" Description="ElectricalObject" NameProperty="Name">
+      <columns>
+        <column Name="ElectricalObjectId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name of the Container Type" IsPrimaryKey="false" AllowNull="false" IsUnique="true" Size="450" IsDiscriminator="false" IsIdentity="false" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description of the Container" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ElectricalObjectTypeId" DataType="Link" Description="ElectricalObjectType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.ElectricalObjectType" />
+        <column Name="Serial" DataType="Text" Description="Serial" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PrimaryVoltage" DataType="Decimal" Description="Primary voltage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SecondaryVoltage" DataType="Decimal" Description="Secondary voltage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TertiaryVoltage" DataType="Decimal" Description="Tertiary voltage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Power" DataType="Decimal" Description="Power" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+      </indexes>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="ElectricalObjectType" PluralName="ElectricalObjectTypes" Description="ElectricalObjectType" NameProperty="Name">
+      <columns>
+        <column Name="ElectricalObjectTypeId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name of the Container Type" IsPrimaryKey="false" AllowNull="false" IsUnique="true" Size="450" IsDiscriminator="false" IsIdentity="false" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description of the Container" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+      </indexes>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="ContainerTypeGroup" PluralName="ContainerTypeGroups" Description="ContainerTypeGroup" NameProperty="Name">
+      <columns>
+        <column Name="ContainerTypeGroupId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name of the Container Type" IsPrimaryKey="false" AllowNull="false" IsUnique="true" Size="450" IsDiscriminator="false" IsIdentity="false" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description of the Container" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NameFormat" DataType="Text" Description="Name format" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces />
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+      </indexes>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="ContainerGroup" PluralName="ContainerGroups" Description="ContainerGroup" NameProperty="Name">
+      <columns>
+        <column Name="ContainerGroupId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name of the Container Type" IsPrimaryKey="false" AllowNull="false" IsUnique="true" Size="450" IsDiscriminator="false" IsIdentity="false" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description of the Container" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces />
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+      </indexes>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="Container">
+      <columns>
+        <column prefix="iv" Name="ContainerGroupId" DataType="Link" Description="ContainerGroup" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.ContainerGroup" />
+      </columns>
+    </table>
+    <table Name="ContainerType">
+      <columns>
+        <column prefix="iv" Name="ContainerTypeGroupId" DataType="Link" Description="ContainerTypeGroup" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.ContainerTypeGroup" />
+      </columns>
+    </table>
+    <table Name="Patient" PluralName="Patients" Description="Patient Table" NameProperty="Name">
+      <columns>
+        <column Name="PatientId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Gender" DataType="Text" Description="Gender" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Hair" DataType="Text" Description="Hair" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Weight" DataType="Decimal" Description="Weight" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Length" DataType="Decimal" Description="Length" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Age" DataType="Number" Description="Age" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Region" DataType="Text" Description="Region" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="EffectOfTreatment" DataType="Text" Description="Effect of a treatment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CauseOfDisease" DataType="Text" Description="Causes of a disease" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NaturalHistoryOfDisease" DataType="Text" Description="Natural history of a disease" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="InstitutionId" DataType="Link" Description="Institution" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.Institution" />
+      </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="Institution" PluralName="Institutions" Description="Institution Table" NameProperty="Name">
+      <columns>
+        <column Name="InstitutionId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Address" DataType="Text" Description="Address" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PostalCode" DataType="Text" Description="PostalCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="City" DataType="Text" Description="City" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CountryId" DataType="Link" Description="Country" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Country"/>
+        <column Name="Type" DataType="Text" Description="Type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="Client">
+      <columns>
+        <column prefix="iv" Name="iVentionClient" DataType="Boolean" Description="Is iVention Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="MobileNumber" DataType="Text" Description="MobileNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="ClientContactTime" DataType="Time" Description="Client Contact Time for testing" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="Weight" DataType="Decimal" Description="Weight" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="Pregnancy" DataType="Number" Description="Pregnancy" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="DateOfBirth" DataType="Date" Description="DateOfBirth" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes />
+    </table>
+    <table Name="ClientContact">
+      <columns>
+        <column prefix="iv" Name="PhoneNumber" DataType="Text" Description="PhoneNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="MobileNumber" DataType="Text" Description="MobileNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="Email" DataType="Text" Description="MobileNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes />
+    </table>
+    <table Name="Experiment">
+      <columns>
+        <column prefix="iv" Name="ClientId" DataType="Link" Description="Client of Project" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+        <column prefix="iv" Name="Outsourced" DataType="Boolean" Description="Outsourced" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Version" DataType="Text" Description="Version" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PlannedStartDate" DataType="Date" Description="PlannedStartDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PlannedEndDate" DataType="Date" Description="PlannedEndDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Title" DataType="Text" Description="Title of experiment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ContactId" DataType="Link" Description="Contact" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="PhoneNumber" DataType="Text" Description="Phone Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PhoneNumberOutOfHours" DataType="Text" Description="Phone Number Out-of-hours" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MobileNumber" DataType="Text" Description="Mobile Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AnimalGroupExperimentId" DataType="Link" Description="AnimalGroupExperiment Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="AnimalExperimentType" />
+        <column Name="ResearchTopics" DataType="Phrase" Description="ResearchTopics" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ResearchDepartment" DataType="Phrase" Description="ResearchDepartment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="OtherDepartment" DataType="Text" Description="OtherDepartment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BudgetNumber" DataType="Text" Description="BudgetNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Tag" DataType="Text" Description="Tag to search on" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ProductId" DataType="Link" Description="Product" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Product" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>ClientId</string>
+          </Columns>
+        </index>
+      </indexes>
+      <queries>
+        <query Name="User.Researcher">
+          <Statement>record.Researcher</Statement>
+          <Entity>User</Entity>
+        </query>
+      </queries>
+    </table>
+    <table Name="Note">
+      <columns>
+        <column prefix="iv" Name="Status" DataType="Phrase" Description="document status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="DocumentStatus" />
+        <column prefix="iv" Name="OwnerId" DataType="Link" Description="Document Owner" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column prefix="iv" Name="Code" DataType="Text" Description="Document Code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="ProjectId" DataType="Link" Description="Project" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Project" />
+      </columns>
+      <interfaces />
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>OwnerId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ProjectId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="FormTemplate">
+      <columns>
+        <column prefix="iv" Name="Status" DataType="Phrase" Description="form status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="DocumentStatus" />
+      </columns>
+      <interfaces></interfaces>
+      <indexes></indexes>
+    </table>
+    <table Name="Test" PluralName="Tests" Description="tests" NameProperty="Name">
+      <columns>
+        <column prefix="iv" Name="ExpectedResult" DataType="Decimal" Description="ExpectedResult" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		 <column prefix="iv" Name="RackTypeId" DataType="Link" Description="RackType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="RackType" />
+      </columns>
+    </table>
+    <table Name="Sequence" PluralName="Sequences" Description="Sequences" NameProperty="Name">
+      <columns>
+        <column prefix="iv" Name="OperatorId" DataType="Link" Description="Operator" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+      </columns>
+      <interfaces></interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>OperatorId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="Order" PluralName="Orders" Description="Order table" NameProperty="Name">
+      <columns>
+        <column prefix="iv" Name="DeadlineOn" DataType="Date" Description="Deadline on timestamp" IsPrimaryKey="false" AllowNull="true" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ResponsibleId" DataType="Link" Description="ResponsibleId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ExpiryDate" DataType="Date" Description="Expiry date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReviewerId" DataType="Link" Description="Reviewer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+        <column prefix="iv" Name="Amount" DataType="Number" Description="Amount of kits ordered" DefaultValue="0" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column prefix="iv" Name="DeliveryDate" DataType="Date" Description="Date order delivered" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column prefix="iv" Name="DeliveryDelayDays" DataType="Number" Description="Days delivery is delayed" DefaultValue="0" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column prefix="iv" Name="TrackingNumber" DataType="Text" Description="Tracking number on package" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column prefix="iv" Name="DeliveryCompany" DataType="Text" Description="Company that delivers package" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column prefix="iv" Name="TicketNumber" DataType="Text" Description="TicketNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+	  </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>DeadlineOn</string>
+          </Columns>
+
+        </index>
+      </indexes>
+    </table>
+    <table Name="Sample" PluralName="Samples" Description="Sample table" NameProperty="Name">
+      <columns>
+        <column prefix="iv" Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+        <column prefix="iv" Name="ExpectedType" DataType="Phrase" Description="ExpectedType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="PatientId" DataType="Link" Description="Patient" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.Patient" />
+        <column prefix="iv" Name="TransformerId" DataType="Link" Description="Transformer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.Transformer" />
+        <column prefix="iv" Name="ReceiveTemperature" DataType="Decimal" Description="Temperature on receive of sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <!-- 20160302 : KO: LS-7850 iVention: Make Triskelion feature calculating offsetsamplingdate available on DEMO system -->
+        <column prefix="iv" Name="OffsetSamplingDay" DataType="Number" Description="Offset day when sampling takes place" DefaultValue="0" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="AnimalCode" DataType="Text" Description="Animal Code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="AnimalGender" DataType="Phrase" Description="Animal Gender" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="Gender"/>
+        <column prefix="iv" Name="AnimalGroupCode" DataType="Text" Description="AnimalGroup Code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column prefix="iv" Name="BatchId" DataType="Link" Description="Batch" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Batch" />
+        <column Name="MaterialId" DataType="Link" Description="Associated Material" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Material" />
+        <column prefix="iv" Name="DateOfBT" DataType="Date" Description="DateOfBT" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="TypeOfBT" DataType="Phrase" Description="TypeOfBT" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="Quality" DataType="Phrase" Description="Quality" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" /> 
+        <column prefix="iv" Name="Variety" DataType="Text" Description="Crop variety" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>      
+        <column prefix="iv" Name="PedigreeItem" DataType="Text" Description="Crop pedrigreeitem" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>      
+        <column prefix="iv" Name="Sequence" DataType="Text" Description="Crop sequence" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column prefix="iv" Name="BreedingOperation" DataType="Text" Description="BreedingOperation" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column prefix="iv" Name="BreedingOperationType" DataType="Text" Description="BreedingOperationType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column prefix="iv" Name="Plot" DataType="Text" Description="Plot" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column prefix="iv" Name="HistoricalCode" DataType="Text" Description="HistoricalCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column prefix="iv" Name="BiorebaCode" DataType="Text" Description="BiorebaCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+      </columns>
+      <interfaces>
+        <interface>IReceivable</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>LocationId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="Chemical" PluralName="Chemicals" Description="Chemicals" NameProperty="Name">
+      <columns>
+        <column prefix="iv" Name="Status" DataType="Phrase" Description="Chemical status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="ChemicalStatus" />
+      </columns>
+    </table>
+    <table Name="Material" PluralName="Materials" Description="Materials" NameProperty="Name">
+      <columns>
+        <column prefix="iv" Name="ChemicalId" DataType="Link" Description="Chemical" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Chemical" />
+        <column prefix="iv" Name="ClientId" DataType="Link" Description="Client quotation" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+        <column prefix="iv" Name="SpeciesId" DataType="Link" Description="Species" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Species" />
+      </columns>
+      <interfaces>
+        <interface>IArticleItem</interface>
+      </interfaces>
+    </table>
+    <table Name="PriceListTestType" PluralName="PriceListTestTypes" Description="PriceList TestType" NameProperty="PriceListTestTypeId">
+      <columns>
+        <column prefix="iv" Name="ChemicalId" DataType="Link" Description="Chemical" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Chemical" />
+      </columns>
+    </table>
+    <table Name="TestType" PluralName="TestTypes" Description="Test type table" NameProperty="Name">
+      <columns>
+        <column Name="ReportInSummary" DataType="Boolean" Description="Report on summary" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReportInAttachment" DataType="Boolean" Description="Report in attachment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="ResultType" PluralName="ResultTypes" Description="Result type table" NameProperty="Name">
+      <columns>
+        <column Name="ReportInSummary" DataType="Boolean" Description="Report on summary" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReportInAttachment" DataType="Boolean" Description="Report in attachment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="SpeciesId" DataType="Link" Description="Species" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Species" />
+      </columns>
+    </table>
+
+    <table Name="Animal" NameProperty="AnimalId">
+      <columns>
+        <column prefix="iv" Name="ParentAnimalId" DataType="Link" Description="Parent animal" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Animal" />
+        <column prefix="iv" Name="Origin" DataType="Text" Description="Origin" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="(default)" />
+        <column prefix="iv" Name="Destination" DataType="Phrase" Description="Destination" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="AnimalDestination" />
+        <column prefix="iv" Name="Healthy" DataType="Boolean" Description="Healthy" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="Sick" DataType="Boolean" Description="Sick" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="Dead" DataType="Boolean" Description="Dead" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="FatherId" DataType="Link" Description="Father animal" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Animal" />
+        <column prefix="iv" Name="MotherId" DataType="Link" Description="Mother animal" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Animal" />
+        <column prefix="iv" Name="VaccinDate" DataType="Date" Description="VaccinDate" IsPrimaryKey="false" AllowNull="true" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="SampleDate" DataType="Date" Description="SampleDate" IsPrimaryKey="false" AllowNull="true" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="WinningDate" DataType="Date" Description="WinningDate" IsPrimaryKey="false" AllowNull="true" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="TreatmentsDone" DataType="Boolean" Description="TreatmentsDone" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="OPUReceived" DataType="Boolean" Description="OPUReceived" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column prefix="iv" Name="OPUStatus" DataType="Phrase" Description="OPUStatus" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="OPUStatus" />
+        <column Name="EmbryoId" DataType="Link" Description="Embryo" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.Embryo" />
+        <column Name="DateOfExit" DataType="Date" Description="DateOfExit" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DateOfArrivalReason" DataType="Text" Description="DateOfArrivalReason" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DateOfExitReason" DataType="Text" Description="DateOfExitReason" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SpeciesId" DataType="Link" Description="Specie" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Species" />
+        <column Name="Supplier" DataType="Text" Description="Supplier" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Responsible" DataType="Text" Description="Responsible" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Sale" DataType="Boolean" Description="Sale" IsPrimaryKey="false" AllowNull="false" DefaultValue="1" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="USDA" DataType="Text" Description="USDA" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Tattoo" DataType="Text" Description="Tattoo" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="InternalID" DataType="Text" Description="InternalID" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Note" DataType="Text" Description="Note" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Generation" DataType="Number" Description="Generation" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="RisNumber" DataType="Text" Description="RisNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DateOfSex" DataType="Date" Description="DateOfSex" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Transgenic" DataType="Phrase" Description="Transgenic" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CopyNumber" DataType="Phrase" Description="CopyNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SouthernBloth" DataType="Phrase" Description="SouthernBloth" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Inclusion" DataType="Phrase" Description="Inclusion" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="C1Inh" DataType="Phrase" Description="C1Inh" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BornFromCoupleId" DataType="Link" Description="Couple from which Animal originates" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.Couple" />
+        <column Name="Autopsy" DataType="Phrase" Description="Autopsy" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>LocationId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="Embryo" PluralName="Embryos" Description="Embryos" NameProperty="Name">
+      <columns>
+        <column Name="EmbryoId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="true" Size="450" IsDiscriminator="false" IsIdentity="false" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AnimalId" DataType="Link" Description="Animal" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Animal" />
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+      </columns>
+    </table>
+    <table Name="Location">
+      <columns>
+        <column Name="Containmentlevel" DataType="Phrase" Description="Containmentlevel" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LocationContainmentlevel" />
+        <column Name="AvailableSurface" DataType="Decimal" Description="AvailableSurface" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ClientId" DataType="Link" Description="Client of Project" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+
+      </columns>
+      <indexes />
+    </table>
+    <table Name="TimeSchema" PluralName="TimeSchemas" Description="TimeSchema table" NameProperty="Name">
+      <columns>
+        <column Name="TimeSchemaId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="SerialNumber" DataType="Number" Description="SerialNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AnimalGroupNewId" DataType="Text" Description="TreatmentGroup" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="Procedure" DataType="Text" Description="Procedure" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Nature" DataType="Text" Description="Nature" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Discomfort" DataType="Phrase" Description="Discomfort" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Duration" DataType="Text" Description="Duration" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Probabilty" DataType="Text" Description="Probabilty" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+        <column Name="ExecutorId" DataType="Link" Description="Executor" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Executor2Id" DataType="Link" Description="Executor2" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ExperimentId" DataType="Link" Description="Experiment Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />
+      </columns>
+    </table>
+    <table Name="Farmaca" PluralName="Farmacas" Description="Farmaca" NameProperty="Name">
+      <columns>
+        <column Name="FarmacaId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="FarmaceuticalAgent" DataType="Text" Description="Treatment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Type" DataType="Phrase" Description="Type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Dose" DataType="Text" Description="Dose" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Duration" DataType="Text" Description="Frequency" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Frequency" DataType="Text" Description="Frequency" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AdministrationRoute" DataType="Text" Description="AdministrationRoute" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExperimentId" DataType="Link" Description="Link to experiment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />
+      </columns>
+    </table>
+    <table Name="Registration" PluralName="Registrations" Description="Registration" NameProperty="RegistrationId">
+      <columns>
+        <column Name="RegistrationId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0"
+        Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="AnimalGroupNewId" DataType="Link" Description="AnimalGroupNew" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.AnimalGroupNew" />
+        <column Name="Aim" DataType="Phrase" Description="Aim" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Specification" DataType="Text" Description="Specification" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Provisions" DataType="Phrase" Description="Provisions" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Safety" DataType="Phrase" Description="Safety" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Techniques" DataType="Phrase" Description="Techniques" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Anesthesics" DataType="Phrase" Description="Anesthesics" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PainSupppression" DataType="Phrase" Description="PainSupppression" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Discomfort" DataType="Phrase" Description="Discomfort" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ConditionEnd" DataType="Phrase" Description="ConditionEnd" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="OtherTox" DataType="Phrase" Description="OtherTox" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExperimentId" DataType="Link" Description="Experiment Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />
+      </columns>
+    </table>
+    <table Name="AnimalGroupNew" PluralName="AnimalGroupNews" Description="AnimalGroup table" NameProperty="Name">
+      <columns>
+        <column Name="AnimalGroupNewId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExperimentId" DataType="Link" Description="Experiment Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />
+        <column Name="NumberOfAnimals" DataType="Number" Description="NumberOfAnimals" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SubStrain2Id" DataType="Link" Description="SubStrain" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="SubStrain" />
+        <column Name="TreatmentGroupNumber" DataType="Text" Description="AnimalTreatmentGroupNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Species2Id" DataType="Link" Description="Species" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Species" />
+        <column Name="Strain2Id" DataType="Link" Description="Strain" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Strain" />
+        <column Name="Gender" DataType="Phrase" Description="Gender" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="RangeAge" DataType="Text" Description="RangeAge" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="RangeAgeUnit" DataType="Phrase" Description="RangeAgeUnit" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="RangeWeight" DataType="Text" Description="RangeAge" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="RangeWeightUnit" DataType="Phrase" Description="RangeWeightUnit" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="OtherSpecies" DataType="Text" Description="OtherSpecies" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="OtherPlace" DataType="Text" Description="OtherPlace" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Characteristic" DataType="Phrase" Description="Gender" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Origin" DataType="Phrase" Description="Gender" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SubStrain" DataType="Text" Description="SubStrainText" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Species" DataType="Phrase" Description="SpeciesText" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Strain" DataType="Text" Description="StrainText" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Genotype" DataType="Text" Description="Genotype" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AnimalsIncluded" DataType="Phrase" Description="AnimalsIncluded" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="AnimalGroupNewAnimal" PluralName="AnimalGroupNewAnimals" Description="AnimalGroupAnimal table" NameProperty="Name">
+      <columns>
+        <column Name="AnimalGroupNewAnimalId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AnimalGroupNewId" DataType="Link" Description="TreatmenGroup" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.AnimalGroupNew" />
+        <column Name="AnimalId" DataType="Link" Description="Animal" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Animal" />
+      </columns>
+    </table>
+
+    <table Name="Project">
+      <columns>
+        <column Name="Title" DataType="Text" Description="Title of research plan" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TitelNTS" DataType="Text" Description="Titel NTS" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BudgetNumber" DataType="Text" Description="BudgetNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ResearcherId" DataType="Link" Description="Researcher" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="WelfareOfficerId" DataType="Link" Description="WelfareOfficerId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="SubstituteResearcherId" DataType="Link" Description="SubstituteResearcherId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <!-- 20140813: MW: ProjectLeaderId and LocationId Fields moved to lifescience schema-->
+        <!--
+        <column Name="ProjectLeaderId" DataType="Link" Description="ProjectLeader" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" DefaultValue="(default)"/>
+        -->
+        <column Name="ClientId" DataType="Link" Description="Client of Project" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>ResearcherId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>WelfareOfficerId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="ExperimentAnimal" PluralName="ExperimentAnimals" Description="ExperimentAnimal table" NameProperty="ExperimentAnimalId">
+      <columns>
+        <column Name="ExperimentAnimalId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="AnimalId" DataType="Link" Description="Animal" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Animal" />
+        <column Name="ExperimentId" DataType="Link" Description="Experiment" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />
+        <column Name="StartDate" DataType="Date" Description="StartDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="EndDate" DataType="Date" Description="EndDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+
+    <!-- KO: 20160120: added for demo purposes -->
+    <table Name="SpecificationConclusion" PluralName="SpecificationConclusions" Description="Specification Conclusions" NameProperty="SpecificationConclusionId">
+      <columns>
+        <column Name="SpecificationConclusionId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="SpecificationId" DataType="Link" Description="Associated specification" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Specification" />
+        <column Name="Expression" DataType="ResultExpression" Description="Expression to be evaluated that determines conclusion" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MatchCriteria" DataType="Text" Description="Filter that defines when the conclusion is true" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Calculated" DataType="Boolean" Description="is this a calculated conclusion?" IsPrimaryKey="false" AllowNull="false" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Conclusion" DataType="TranslatedHtml" Description="Default Conclusion text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="SampleConclusion" PluralName="SampleConclusions" Description="Sample Conclusions" NameProperty="SampleConclusionId">
+      <columns>
+        <column Name="SampleConclusionId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="SpecificationConclusionId" DataType="Link" Description="Associated specificationconclusion" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.SpecificationConclusion" />
+        <column Name="TextValue" DataType="Text" Description="TextValue is for fast reporting or formatting use only" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NumberValue" DataType="Decimal" Description="NumberValue" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampleId" DataType="Link" Description="Associated Sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Sample" />
+        <column Name="Conclusion" DataType="TranslatedHtml" Description="Conclusion text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MaterialId" DataType="Link" Description="Associated Material" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Material" />
+      </columns>
+    </table>
+
+    <table Name="Product">
+      <columns>
+        <column prefix="iv" Name="ParentProductId" DataType="Link" Description="Parent product" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Product" />
+        <column Name="ExpiryDate" DataType="Date" Description="Expiry date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReviewerId" DataType="Link" Description="Reviewer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="MaterialId" DataType="Link" Description="Material" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Material" />
+        <column Name="ExperimentId" DataType="Link" Description="Experiment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />
+        <!-- 20170831: ES: LS-16724 schema changes ivention custom for demo -->
+        <column Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+      </columns>
+    </table>
+    <table Name="Batch">
+      <columns>
+        <column Name="ExperimentId" DataType="Link" Description="Experiment Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />
+      </columns>
+    </table>
+	<table Name="MaterialType">
+      <columns>
+        <column Name="Code" DataType="Text" Description="MaterialType code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="Complaint" PluralName="Complaints" Description="Complaints for CAPA management" NameProperty="ComplaintId">
+      <columns>
+        <column Name="ComplaintId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="OrderId" DataType="Link" Description="Link to order" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Order" />
+        <column Name="ProductId" DataType="Link" Description="Link to product" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Product" />
+        <column Name="SampleId" DataType="Link" Description="Link to sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Sample" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="100" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="Type" DataType="Text" Description="Diskspace, Website Status, CPU" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="Status" DataType="Phrase" Description="Error, Warning, Information" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="TimeStamp" DataType="Date" Description="Send from client timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="CorrectiveAction" PluralName="CorrectiveActions" Description="Corrective actions for CAPA management" NameProperty="CorrectiveActionId">
+      <columns>
+        <column Name="CorrectiveActionId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="Status" DataType="Phrase" Description="Error, Warning, Information" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="New" />
+        <column Name="Type" DataType="Text" Description="Type of corrective action" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="ComplaintId" DataType="Link" Description="Link to complaint" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.Complaint" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="TimeStamp" DataType="Date" Description="Send from client timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="ComplaintCorrectiveAction" PluralName="ComplaintCorrectiveActions" Description="Link between complaint and corrective action" NameProperty="CorrectiveActionId">
+      <columns>
+        <column Name="ComplaintCorrectiveActionId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="ComplaintId" DataType="Link" Description="Link to complaint" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.Complaint" />
+        <column Name="CorrectiveActionId" DataType="Link" Description="Link to corrective action" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="iv.CorrectiveAction" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="TimeStamp" DataType="Date" Description="Send from client timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+	<table Name="RackTypeTestType" PluralName="RackTypeTestTypes" Description="Link between racktype and testtypes" NameProperty="RackTypeTestTypeId">
+      <columns>
+        <column Name="RackTypeTestTypeId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+		<column Name="RackTypeId" DataType="Link" Description="Link to racktype" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="RackType" />
+		<column Name="TestTypeId" DataType="Link" Description="Link to TestType" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="TestType" />
+		<column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		 <column Name="TimeStamp" DataType="Date" Description="Send from client timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	  </columns>
+	   <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="ProductUnit">
+      <columns>
+        <column Name="ExpiryDate" DataType="Date" Description="Expiry date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReviewerId" DataType="Link" Description="Reviewer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+      </columns>
+    </table>
+    <table Name="Couple" PluralName="Couples" Description="Couple for breeding" NameProperty="CoupleId">
+      <columns>
+        <column Name="CoupleId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ExperimentId" DataType="Link" Description="Experiment Id" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />
+        <column Name="MaleAnimalId" DataType="Link" Description="Male Animal ID" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Animal" />
+        <column Name="FemaleAnimalId" DataType="Link" Description="Female Animal ID" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Animal" />
+        <column Name="ProposedStartDate" DataType="Date" Description="Proposed Start Date" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MatingDate" DataType="Date" Description="Mating Date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Kindling" DataType="Date" Description="Mating Date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NestDate" DataType="Date" Description="Nest Date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NumberOfPups" DataType="Number" Description="Number Of Pups" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="WeaningDateNest" DataType="Date" Description="Weaning Date Nest" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NumberOfMalePups" DataType="Number" Description="Number Of Male Pups" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NumberOfFemalePups" DataType="Number" Description="Number Of Female Pups" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="FemaleOutDate" DataType="Date" Description="Female Out Date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NumberOfMalePupsWeaned" DataType="Number" Description="Number Of Male Pups Weaned" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NumberOfFemalePupsWeaned" DataType="Number" Description="Number Of Female Pups Weaned" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NumberOfMalePupsEuthanized" DataType="Number" Description="Number Of Male Pups Euthanized" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NumberOfFemalePupsEuthanized" DataType="Number" Description="Number Of Female Pups Euthanized" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="EndDate" DataType="Date" Description="End Date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Status" DataType="Phrase" Description="Status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Crossbreeding" DataType="Boolean" Description="Check if crossbreeding" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ZooEasyBreedingPair" DataType="Text" Description="PairId in ZooEasy" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+        <interface>IHasNotes</interface>
+      </interfaces>
+    </table>
+    <table Name="ExperimentProject" PluralName="ExperimentProjects" Description="Table for multiple projects on experiment" NameProperty="ExperimentProjectId">
+      <columns>
+        <column Name="ExperimentProjectId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ExperimentId" DataType="Link" Description="Experiment Id" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />
+        <column Name="ProjectId" DataType="Link" Description="Project Id" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Project" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="Type" DataType="Text" Description="Type link" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+      </columns>
+      <interfaces />
+    </table>
+
+    </tables>
+  
+  <phrases>
+
+    <!-- 20160302 : KO: LS-7850 iVention: Make Triskelion feature calculating offsetsamplingdate available on DEMO system -->
+    <phrase Name="Gender">
+      <phraseItems>
+        <phraseItem Value="Male" Text="Male" NL="Man" />
+        <phraseItem Value="Female" Text="Female" NL="Vrouw" />
+        <phraseItem Value="Neutral" Text="Neutral" NL="Onzijdig" />
+      </phraseItems>
+    </phrase>
+    <phrase Name="ProductUnitStatus">
+      <phraseItems>
+        <phraseItem Value="test" Text="test" NL="test" />
+      </phraseItems>
+    </phrase>
+    <phrase Name="InstrumentModule" NoEnumeration="true">
+      <phraseItems>
+        <phraseItem Value="iVention.Triskelion.Windows.Instruments.ICPMS_Instrument" Text="Triskelion-ICPMS" NL="Triskelion-ICPMS" EN="Triskelion-ICPMS" />
+      </phraseItems>
+    </phrase>
+  </phrases>
+</schema>

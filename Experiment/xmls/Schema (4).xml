@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Prefix="Dekra" Name="Dekra" UpgradeActionIndex="27">
+  <tables>
+    <table Name="Order" PluralName="Orders" Description="Order table" NameProperty="Name">
+	 <columns>
+      <column Name="Referentie" DataType="Text" Description="Klantreferentie" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      <column Name="DatumVanOpdracht" DataType="Text" Description="OrderDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	  <column Name="OnderzoeksVraag" DataType="Text" Description="Research Question" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	  </columns>
+    </table>
+   	 
+	<table Name="ObjectType" PluralName="ObjectTypes" Description="ObjectType" NameProperty="Name">
+	 <columns>
+		<column Name="ObjectTypeId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+		<column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		</columns>
+	</table>
+	<interfaces>
+        <interface>ITimeStamped</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+	</indexes>
+	<table Name="Object" PluralName="Objects" Description="Object - bijv. treinstel, brugdeel" NameProperty="Name">
+	 <columns>
+		<column Name="ObjectId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+		<column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="ObjectTypeId" DataType="Link" Description="ObjectType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Dekra.ObjectType" />
+		</columns>
+	</table>
+	<interfaces>
+        <interface>ITimeStamped</interface>
+      </interfaces>
+     <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+	</indexes>	
+	<table Name="OlieType" PluralName="OlieTypes" Description="OlieType" NameProperty="Name">
+	 <columns>
+		<column Name="OlieTypeId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+		<column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	 </columns>
+	</table>
+	<interfaces>
+        <interface>ITimeStamped</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+	</indexes>
+	<table Name="ComponentType" PluralName="ComponentTypes" Description="CompontentType" NameProperty="Name">
+	 <columns>
+		<column Name="ComponentTypeId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+		<column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		</columns>
+	</table>
+	<interfaces>
+        <interface>ITimeStamped</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+	</indexes>
+	<table Name="Component" PluralName="Components" Description="Component bijv. magneetplug" NameProperty="Name">
+	 <columns>
+		<column Name="ComponentId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+		<column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="ComponentTypeId" DataType="Link" Description="ObjectType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Dekra.ComponentType" />
+		<column Name="OlieTypeId" DataType="Link" Description="OlieType waar component mee is gesmeerd" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Dekra.OlieType" />
+		<column Name="ObjectId" DataType="Link" Description="Object waar component zich in bevindt" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Dekra.Object" />
+		<column Name="LaatsteVerversDatum" DataType="Date" Description="Laatste ververs datum" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		</columns>
+	</table>
+	<interfaces>
+        <interface>ITimeStamped</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+	</indexes>
+	<table Name="ComponentOilChange" PluralName="ComponentOilChanges" Description="Olieverversdata op component" NameProperty="ComponentOilChangeId">
+	 <columns>
+		<column Name="ComponentOilChangeId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+		<column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		<column Name="ComponentId" DataType="Link" Description="ObjectType" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Dekra.Component" />
+		<column Name="VerversDatum" DataType="Date" Description="Ververs datum" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		</columns>
+	</table>
+	<table Name="SampleType">
+	 <columns>
+		 <column Name="ObjectTypeId" DataType="Link" Description="ObjectType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Dekra.ObjectType" />
+		 <column Name="ComponentTypeId" DataType="Link" Description="ComponentType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Dekra.ComponentType" />
+		 <column Name="OlieTypeId" DataType="Link" Description="OlieType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Dekra.OlieType" />
+		 <column Name="MonsterSoort" DataType="Text" Description="MonsterSoort" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  />
+		 </columns>
+	 </table>
+	 <table Name="Sample" PluralName="Samples" Description="Sample table" NameProperty="Name">
+	  <columns>
+		<column Name="ComponentId" DataType="Link" Description="ObjectType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Dekra.Component" />
+		<column Name="Referentie" DataType="Text" Description="Klantreferentie" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="VisueleAfwijking" DataType="Text" Description="VisueleAfwijking" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="KilometerStand" DataType="Number" Description="KilometerStand" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="AantalDraaiuren" DataType="Number" Description="Aantal Draaiuren" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="OlieVerverst" DataType="Boolean" Description="OlieVerverst" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		</columns>
+	</table>
+  </tables>
+</schema>

@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Soilcares" Prefix="scr" UpgradeActionIndex="23">
+  <tables>
+
+    <table Name="Sample">
+      <columns>
+        <column Name="Biohazard" DataType="Boolean" Description="Sample marked as a biohazard sample" IsPrimaryKey="false" AllowNull="false" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="FieldNumber" DataType="Text" Description="Field number associated with the sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="13" Precision="0" Scale="0" />
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+        <column Name="StartDrying" DataType="Date" Description="Start date/time drying" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="EndDrying" DataType="Date" Description="End date/time drying" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MillingBeaker" DataType="Phrase" Description="Milling beaker in use" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MillingDevice" DataType="Phrase" Description="Milling device in use" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampleSplitCheck" DataType="Date" Description="Date/time of check before splitting the sample into the separate fraction bottles" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="HandheldStatus" DataType="Phrase" Description="Field for storing Handheld status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="XRFTabletStatus" DataType="Phrase" Description="Field for storing XRF Tablet status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="WaterExtractionStatus" DataType="Phrase" Description="Field for storing Water Extraction status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MIRStatus" DataType="Phrase" Description="Field for storing MIR status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BottleLabelsPrinted" DataType="Boolean" Description="Bottle labels have been printed" IsPrimaryKey="false" AllowNull="false" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BoxXRFStatus" DataType="Phrase" Description="Field for storing Box XRF status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TextureStatus" DataType="Phrase" Description="Field for storing Texture status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MillingStatus" DataType="Phrase" Description="Field for storing Milling status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Crucible" DataType="Number" Description="Field for storing Crucible" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MehlichStatus" DataType="Phrase" Description="Field for storing Mehlich status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MoistureStatus" DataType="Phrase" Description="Field for storing Moisture status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CoHexStatus" DataType="Phrase" Description="Field for storing CoHex status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TOCStatus" DataType="Phrase" Description="Field for storing TOC status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TN_TCStatus" DataType="Phrase" Description="Field for storing TN/TC status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="pH_KClStatus" DataType="Phrase" Description="Field for storing pH-KCl status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DensityStatus" DataType="Phrase" Description="Field for storing Milling status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="OriginalCode" DataType="Text" Description="Sample original code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="13" Precision="0" Scale="0" />
+        <column Name="WaterDAStatus" DataType="Phrase" Description="Field for storing Water DA status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="WaterpHStatus" DataType="Phrase" Description="Field for storing Water pH status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="WaterECStatus" DataType="Phrase" Description="Field for storing Water EC status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="WaterICPStatus" DataType="Phrase" Description="Field for storing Water ICP status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="Priority">
+      <columns>
+        <column Name="OrderNumber" DataType="Number" Description="Ordernumber of the priority" IsPrimaryKey="false" AllowNull="false" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="ImportLicense" PluralName="ImportLicenses" Description="Import license table" NameProperty="LicenseNumber">
+      <columns>
+        <column Name="ImportLicenseId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="LicenseNumber" DataType="Text" Description="Import license number" IsPrimaryKey="false" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description of the import license" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ValidFrom" DataType="Date" Description="Valid from" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExpiresOn" DataType="Date" Description="Expires on" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="IssuedTo" DataType="Text" Description="Issued to" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="IssuedOn" DataType="Date" Description="Issued on" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="IssuedToCountryId" DataType="Link" Description="Country to which the import license was issued to" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Country" />
+        <column Name="ReturnedOn" DataType="Date" Description="Date of return of license" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReturnedFromCountryId" DataType="Link" Description="Country from which the import license was returned" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Country" />
+        <column Name="ClearedOn" DataType="Date" Description="Date the import license was cleared by NVWA" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Incident" DataType="Boolean" Description="Check whether there was an accident/incident" IsPrimaryKey="false" AllowNull="false" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="Order">
+      <columns>
+        <column Name="ImportLicenseId" DataType="Link" Description="Import license" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="scr.ImportLicense" />
+      </columns>
+    </table>
+
+    <table Name="SequenceType">
+      <columns>
+        <column Name="Method" DataType="Text" Description="Method" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Folder" DataType="Text" Description="Folder" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ColHeaderExpResult" DataType="Text" Description="The column header for the result that is in the export file" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExpResultTypeId" DataType="Link" Description="The result that is in the export file" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ResultType" />
+        <column Name="ExpResultDefaultValue" DataType="Text" Description="The default value for the result that is in the export file when no export result available" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="ResultType">
+      <columns>
+        <column Name="ReportName" DataType="Text" Description="Report name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="50" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="SampleTypeTestType">
+      <columns>
+        <column Name="MethodDescription" DataType="Text" Description="Method description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+      </columns>
+    </table>
+	
+    <table Name="Sequence">
+      <columns>
+        <column Name="ExtraStatus" DataType="Phrase" Description="Field for storing extra SoilCares status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TOCStatus" DataType="Phrase" Description="Field for storing TOC status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TextureStatus" DataType="Phrase" Description="Field for storing TOC status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MStartTime" DataType="Date" Description="Start time method" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MExpectedEndTime" DataType="Date" Description="Expected end time method" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MEndTime" DataType="Date" Description="Actual end time method" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="XRFStatus" DataType="Phrase" Description="Field for storing XRF status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="WaterDAStatus" DataType="Phrase" Description="Field for storing Water DA status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="WaterpHStatus" DataType="Phrase" Description="Field for storing Water pH status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="WaterECStatus" DataType="Phrase" Description="Field for storing Water EC status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="WaterICPStatus" DataType="Phrase" Description="Field for storing Water ICP status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+	
+    <table Name="Rack">
+      <columns>
+        <column Name="ExtraStatus" DataType="Phrase" Description="Field for storing extra SoilCares status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SequenceId" DataType="Link" Description="Sequence" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Sequence" />
+      </columns>
+    </table>
+
+    <table Name="MaterialType">
+      <columns>
+        <column Name="Supplier" DataType="Text" Description="Supplier of the material type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ArticleNameSupplier" DataType="Text" Description="Article name of the supplier" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ArticleNumber" DataType="Text" Description="Article number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SpecificationSupplier" DataType="Text" Description="Specification of the supplier" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SpecificationGSL" DataType="Text" Description="Specification GSL" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ThresholdLevel" DataType="Decimal" Description="Threshold level for ordering new stock" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="Material">
+      <columns>
+        <column Name="OrderNumber" DataType="Text" Description="Order number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PricePerUnit" DataType="Decimal" Description="Price per unit" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AmountReceived" DataType="Decimal" Description="Received amount" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+	
+    <table Name="MaterialUsage" PluralName="MaterialUsages" Description="Material usage table" NameProperty="MaterialUsageId">
+      <columns>
+        <column Name="MaterialUsageId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="MaterialId" DataType="Link" Description="Material" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Material" />
+        <column Name="AmountUsed" DataType="Decimal" Description="Amount used" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+  </tables>
+
+  <phrases>
+    <phrase Name="InstrumentModule" NoEnumeration="true">
+      <phraseItems>
+        <phraseItem Value="iVention.SoilCares.Windows.Instruments.ICPMS_Instrument" Text="SoilCares-ICPMS" NL="SoilCares-ICPMS" EN="SoilCares-ICPMS" />
+      </phraseItems>
+    </phrase>
+    <phrase Name="FileProcessorType">
+      <phraseItems>
+        <phraseItem Value="CECPrediction" Text="CECPrediction" NL="CECPrediction" />
+        <phraseItem Value="SpectrumCheck" Text="SpectrumCheck" NL="SpectrumCheck" />
+        <phraseItem Value="AddScanRequest" Text="AddScanRequest" NL="AddScanRequest" />
+        <phraseItem Value="GenericResult" Text="GenericResult" NL="GenericResult" />
+      </phraseItems>
+    </phrase>
+  </phrases>
+
+</schema>

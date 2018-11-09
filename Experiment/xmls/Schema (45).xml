@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="GenDx" Prefix="GenDx">
+  <tables>
+
+    <table Name="DocumentVersionUser" PluralName="DocumentVersionUsers" Description="User that should edit and read document" NameProperty="DocumentVersionUserId">
+      <columns>
+        <column Name="DocumentVersionUserId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="DocumentVersionId" DataType="Link" Description="Link to documentversion" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="DocumentVersion" />
+        <column Name="UserId" DataType="Link" Description="Link to user" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <!-- LS-17712 CR: Update schema GenDx -->
+        <column Name="Action" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="50" Precision="0" Scale="0" />
+        <!-- /LS-17712 CR -->
+        <column Name="Mandatory" DataType="Boolean" Description="Defines if user is mandatory to act" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="1"/>
+        <column Name="Done" DataType="Boolean" Description="Defines if user is done with the action" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0"/>
+        <column Name="Reviewed" DataType="Boolean" Description="Defines if user has reviewed edits" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0"/>
+      </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>DocumentVersionId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>UserId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="DocumentLink" PluralName="DocumentLinks" Description="Link between documents" NameProperty="DocumentLinkId">
+      <columns>
+        <column Name="DocumentLinkId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="DocumentId" DataType="Link" Description="Document" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Document" />
+        <column Name="LinkedDocumentId" DataType="Link" Description="Link to document" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Document" />
+      </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>DocumentId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>LinkedDocumentId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="DocumentVersionLink" PluralName="DocumentVersionLinks" Description="Link between documentversions" NameProperty="DocumentVersionLinkId">
+      <columns>
+        <column Name="DocumentVersionLinkId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="DocumentVersionId" DataType="Link" Description="DocumentVersion" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="DocumentVersion" />
+        <column Name="LinkedDocumentVersionId" DataType="Link" Description="Link to document" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="DocumentVersion" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>DocumentVersionId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>LinkedDocumentVersionId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="DocumentVersionCountry" PluralName="DocumentVersionCountries" Description="Link between documentversion and country" NameProperty="DocumentVersionCountryId">
+      <columns>
+        <column Name="DocumentVersionCountryId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="DocumentVersionId" DataType="Link" Description="DocumentVersion" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="DocumentVersion" />
+        <column Name="CountryId" DataType="Link" Description="Link to document" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Country" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>DocumentVersionId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>CountryId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="DocumentType">
+	 <columns>
+      <column Name="DocumentId" DataType="Link" Description="Document" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="File" />
+	  </columns>
+    </table>
+	<table Name="ProductType">
+	   <columns>
+      <column Name="Process" DataType="Text" Description="Process" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	   </columns>
+    </table>
+    <table Name="CaPA" PluralName="CaPAs" Description="CaPA" NameProperty="Name">
+      <columns>
+        <column Name="CaPAId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="ActionType" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Process" DataType="Text" Description="Process" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+		<column Name="ProductTypeId" DataType="Link" Description="ProductType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ProductType" />
+        <column Name="LotNumber" DataType="Text" Description="LotNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="TubeNumber" DataType="Text" Description="LotNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="FollowUpId" DataType="Link" Description="Link to user" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="CauseAnalysis" DataType="Text" Description="CauseAnalysis" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Correction" DataType="Text" Description="Correction" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Risk" DataType="Text" Description="Risk" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="CorrectiveAction" DataType="Text" Description="CorrectiveAction" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="VerificationParameter" DataType="Text" Description="Verification Parameter" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="DueDate" DataType="Date" Description="Due date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="DuePeriod" DataType="Number" Description="Due date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="CheckDate" DataType="Date" Description="Check date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="CheckPeriod" DataType="Number" Description="Check date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="ApproverId" DataType="Link" Description="Link to user" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Reviewed" DataType="Boolean" Description="Check if reviewed" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+		<column Name="ParentId" DataType="Link" Description="Link to user" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="GenDx.CaPA" />
+      </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+		<interface>IStatus</interface>
+      </interfaces>
+	   <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>ProductTypeId</string>
+          </Columns>
+        </index>
+		</indexes>
+    </table>
+    <table Name="NonConformity" PluralName="NonConformities" Description="NonConformities" NameProperty="Name">
+      <columns>
+        <column Name="NonConformityId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Conformity summary" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Process" DataType="Text" Description="Process" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+		<column Name="ProductTypeId" DataType="Link" Description="ProductType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="ProductType" />
+        <column Name="LotNumber" DataType="Text" Description="LotNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="TubeNumber" DataType="Text" Description="LotNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LaboratoryId" DataType="Link" Description="Laboratory" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Laboratory" />
+		<column Name="CountryId" DataType="Link" Description="Country" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Country" />
+		<column Name="VigilanceCase" DataType="Boolean" Description="Vigilance case" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="PersonExcludedId" DataType="Link" Description="Person excluded" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		<column Name="FollowUpId" DataType="Link" Description="Link to user" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" /> 
+        <column Name="Remarks" DataType="Text" Description="Remarks" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="CauseAnalysis" DataType="Text" Description="CauseAnalysis" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Correction" DataType="Text" Description="Correction" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Risk" DataType="Text" Description="Risk" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="VerificationParameter" DataType="Text" Description="Verification Parameter" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="ApproverId" DataType="Link" Description="Link to user" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Type" DataType="Text" Description="Type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      	<column Name="CaPAId" DataType="Link" Description="Link to CaPA" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="GenDx.CaPA" />
+		<column Name="DueDate" DataType="Date" Description="Due date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="DuePeriod" DataType="Number" Description="Due date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+       </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+        <interface>IStatus</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>ProductTypeId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>PersonExcludedId</string>
+          </Columns>
+        </index>
+		<index Unique="false">
+          <Columns>
+            <string>CaPAId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+	
+    <table Name="Complaint" PluralName="Complaints" Description="Complaints" NameProperty="Name">
+      <columns>
+        <column Name="ComplaintId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Complaint name" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NonConformityId" DataType="Link" Description="NCR" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="GenDx.NonConformity" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>NonConformityId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+  </tables>
+</schema>
+

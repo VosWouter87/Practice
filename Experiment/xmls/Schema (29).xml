@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Masterlab" Prefix="Masterlab" UpgradeActionIndex="22">
+  <tables>
+    <table Name="Order">
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="Sample">
+      <columns>
+        <column Name="AliquotId" DataType="Number" Description="Nautilus AliqoutId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SendToNautilus" DataType="Boolean" Description="When this field is set a CSV with this sample has been created for Nautilus" IsPrimaryKey="false" AllowNull="false" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Exported" DataType="Boolean" Description="Exported" IsPrimaryKey="false" AllowNull="false" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampleIdRequestor" DataType="Text" Description="Sample Id from the external lab" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="RequesterId" DataType="Text" Description="Requester Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes>
+        <!--<index Unique="false">
+          <Columns>
+            <string>Status</string>
+            <string>Exported</string>
+          </Columns>
+        </index>-->
+      </indexes>
+      <interfaces>
+        <interface>IExternalRecord</interface>
+        <interface>IReceivable</interface>
+      </interfaces>
+    </table>
+    <table Name="SampleType">
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="Test">
+      <columns>
+        <column Name="WorkflowTestIds" DataType="Text" Description="Nautilus Tests created by this workflow" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="TestType">
+      <columns>
+        <column Name="NautilusWorkflowName" DataType="Text" Description="Nautilus Workflow name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="Result">
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="Product">
+      <columns>
+        <column Name="LaboratoryId" DataType="Link" Description="product of external lab as configured in nautilus" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Laboratory" />
+      </columns>
+    </table>
+    <table Name="Laboratory">
+      <columns>
+        <column Name="InvoiceInfo" DataType="Text" Description="Field required for csv export" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReportInfo" DataType="Text" Description="Field required for csv export" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MasterlabCode" DataType="Text" Description="Field to generate different identifier for masterlab" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+  </tables>
+</schema>

@@ -13,7 +13,7 @@ public class AreTheySameTests
         var numbers = new int[] { 2, 6, 1, 5, 3, 4 };
         
         // Act
-        AreTheySame.Sort(numbers);
+        //AreTheySame.Sort(numbers);
 
         // Assert
         for (var i = 0; i < numbers.Length; i++)

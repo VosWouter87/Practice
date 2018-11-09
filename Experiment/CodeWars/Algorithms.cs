@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -94,6 +95,151 @@ namespace CodeWars
             var temp = numbers[a];
             numbers[a] = numbers[b];
             numbers[b] = temp;
+        }
+
+        public static List<int> GetPrimeFactors(int number)
+        {
+            var factors = new List<int>();
+
+            if (number < 0)
+            {
+                return factors;
+            }
+
+            if (number == 1 || number == 5 || number == 7)
+            {
+                factors.Add(number);
+                return factors;
+            }
+
+            var sqrt = Math.Sqrt(number);
+            var sumOfDigits = SumOfDigits(number);
+            
+            while ((number & 1) == 0)
+            {
+                factors.Add(2);
+            }
+
+            // There is a special case with 3 and 9, where the number can be divided by 3 or 9 when the total of it's digits can be divided by 3 or 9.
+            while (sumOfDigits % 3 == 0)
+            {
+                factors.Add(3);
+                number /= 3;
+                sumOfDigits = SumOfDigits(number);
+            }
+
+            while (number % 5 == 0)
+            {
+                number /= 5;
+                factors.Add(5);
+            }
+
+            while (number % 7 == 0)
+            {
+                number /= 7;
+                factors.Add(7);
+            }
+
+            sumOfDigits = SumOfDigits(number);
+            while (sumOfDigits % 9 == 0)
+            {
+                factors.Add(9);
+            }
+            
+            for (var i = 11; i < sqrt; i += 6)
+            {
+                if (number % i == 0)
+                {
+                    number /= i;
+                    factors.Add(number);
+                }
+            }
+
+            return factors;
+        }
+
+        public static bool IsPrime(int number)
+        {
+            if (number < 1)
+            {
+                return false;
+            }
+            
+            if (number == 1 || number == 5 || number == 7 || (number & 1) == 0)
+            {
+                return true;
+            }
+
+            var sumOfDigits = SumOfDigits(number);
+
+            // There is a special case with 3 and 9, where the number can be divided by 3 or 9 when the total of it's digits can be divided by 3 or 9.
+            if (sumOfDigits % 3 == 0 || sumOfDigits % 9 == 0)
+            {
+                return true;
+            }
+
+            // Divisors 2 and 3 have been checked already
+            if (number % 5 == 0 || number % 7 == 0)
+            {
+                return true;
+            }
+
+            var sqrt = Math.Sqrt(number);
+            for (var i = 11; i < sqrt; i += 6)
+            {
+                if (number % i == 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static List<int> PrimeNumbers(int max)
+        {
+            if (max < 1)
+            {
+                return null;
+            }
+
+            var results = new List<int>();
+            results.Add(1);
+
+            var sieve = new System.Collections.BitArray(max, true);
+            sieve[0] = false;
+            sieve[1] = true;
+
+            for (var i = 2; i < max; i++)
+            {
+                if (sieve[i])
+                {
+                    results.Add(i);
+                    for (var j = i += i; j < max; j += i)
+                    {
+                        sieve[j] = false;
+                    }
+                }
+            }
+
+            return results;
+        }
+
+        public static int SumOfDigits(int number)
+        {
+            return SumOfDigits(number.ToString());
+        }
+
+        public static int SumOfDigits(string number)
+        {
+            var total = 0;
+
+            foreach(var digit in number)
+            {
+                total += digit - '0';
+            }
+
+            return total;
         }
     }
 }

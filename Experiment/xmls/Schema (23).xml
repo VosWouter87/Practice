@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Proqares" Prefix="Custom" UpgradeActionIndex="22">
+  <tables>
+    <table Name="Order">
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="OrderType">
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="SampleType">
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="ResultType">
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="Chemical">
+      <columns>
+        <column Name="Group" DataType="Text" Description="Chemical group, used for test counts" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="Rack">
+      <columns>
+        <column Name="Temperatuur" DataType="Decimal" Description="Temperatuur" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CellGrootte" DataType="Decimal" Description="CellGrootte" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Luchtdruk" DataType="Decimal" Description="CellGrootte" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BereikMassflowController" DataType="Decimal" Description="BereikMassflowController" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Instelling_1" DataType="Decimal" Description="Instelling 1 cm/s" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Instelling_5" DataType="Decimal" Description="Instelling 5 cm/s" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes />
+    </table>
+    <table Name="TestType">
+      <columns>
+        <column Name="Werkgebied" DataType="Text" Description="Werkgebied" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MetingTestTypeId" DataType="Link" Description="Meting TestType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="TestType" />
+      </columns>
+      <indexes />
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="Result">
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+
+    <table Name="Test">
+      <columns>
+        <column Name="ChemicalId" DataType="Link" Description="Chemical" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Chemical" />
+        <column Name="Replication" DataType="Number" Description="Replication" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Flow" DataType="Number" Description="Flow" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Drukverschil" DataType="Number" Description="Drukverschil" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Temperatuur" DataType="Decimal" Description="Temperatuur" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="RelatieveVochtigheid" DataType="Text" Description="RelatieveVochtigheid" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Meetpunten" DataType="Text" Description="Meetpunten" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MonsternameTijden" DataType="Text" Description="MonsternameTijden" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="GrootteCel" DataType="Decimal" Description="GrootteCel" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Concentratie" DataType="Decimal" Description="Concentratie" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TotaleTestduur" DataType="Number" Description="TotaleTestduur" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Vermogen" DataType="Number" Description="Vermogen" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Druk" DataType="Decimal" Description="Druk" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Opmerking" DataType="Text" Description="Opmerking" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Buitenlaag" DataType="Text" Description="Buitenlaag" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AantalDruppels" DataType="Number" Description="AantalDruppels" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DoorzuigSnelheid" DataType="Decimal" Description="DoorzuigSnelheid" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ConditioneringDuur" DataType="Decimal" Description="ConditioneringDuur" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ConditioneringTemperatuur" DataType="Decimal" Description="ConditioneringTemperatuur" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ConditioneringRv" DataType="Decimal" Description="ConditioneringRv" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Gas" DataType="Text" Description="Gas" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="CreatedOn" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AssignedById" DataType="Link" Description="CreatedBy" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="MonsterCode" DataType="Text" Description="MonsterCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Treatment" DataType="Text" Description="Treatment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PressureCorrectionFactor" DataType="Decimal" Description="Correctie factor" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Tijdstip" DataType="Text" Description="Tijdstip" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>ChemicalId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>AssignedById</string>
+          </Columns>
+        </index>
+      </indexes>
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="Sample">
+      <columns>
+        <column Name="MonsterBehandeling" DataType="Text" Description="Monster behandeling" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MonsterSoort" DataType="Text" Description="Monster soort" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Tijdstip" DataType="Text" Description="Tijdstip" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Des" DataType="Decimal" Description="Des" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="1" />
+      </columns>
+      <indexes />
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+  </tables>
+</schema>

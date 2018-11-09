@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="interovo" Prefix="interovo">
+<tables> 
+<table Name="DocumentLocation" PluralName="DocumentLocations" Description="Document Location table" NameProperty="InterovoDocumentLocationId">
+      <columns>
+        <column Name="InterovoDocumentLocationId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="DocumentId" DataType="Link" Description="Link to Document" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Document" />
+        <column Name="LocationId" DataType="Link" Description="Link to Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+      </columns>
+      <interfaces />
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>DocumentId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>LocationId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    
+    <table Name="Document" PluralName="Documents" Description="Document Location table">
+      <columns>
+          <column Name="Code" DataType="Text" Description="OrderType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        </columns>
+    </table>
+	<!-- Added custom fields by HA dd 20161111 -->
+	<!-- Added additional fields BatchProduct and ShippingDate by HA dd 20161115 -->
+	<table Name="Order" PluralName="Orders" Description="Order table" NameProperty="Name">
+      <columns>
+        <column Name="ProductionDate" DataType="Date" Description="Date of production of the batch" IsPrimaryKey="false" AllowNull="true" DefaultValue="" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BestBefore" DataType="Date" Description="Best Before Date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="YourReference" DataType="Text" Description="Reference code from purchaser" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="YourOrderNumber" DataType="Text" Description="Ordernumber from purchaser" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Packaging" DataType="Text" Description="Packaging of product" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BatchCode" DataType="Text" Description="Code of the production batch" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ProductionAmount" DataType="Decimal" Description="Amount of product" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="BatchProduct" DataType="Text" Description="Product linked to the batch" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="ShippingDate" DataType="Date" Description="Date Of Shipment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      	<!-- Additional Fields as per request dd 20161122 added by HA 20161123 -->
+		<!-- LS-11550 Add Additional Fields to Order Entity (Client Specific) -->
+		<column Name="Purchaser" DataType="Text" Description="Purchaser" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="WeighingLetterNumber" DataType="Text" Description="Weighing Letter Number from purchaser" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="FreightLetterNumber" DataType="Text" Description="Freight Letter Number from purchaser" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Supplier" DataType="Text" Description="Supplier of the goods" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="FarmingHusbandry" DataType="Text" Description="Animal Husbandry" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="TemperatureHotroom" DataType="Decimal" Description="Temperature in Hotroom" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="StartDateHotroom" DataType="Date" Description="Startdate Hotroom" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="EndDateHotroom" DataType="Date" Description="Enddate Hotroom" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="HotroomNumber" DataType="Number" Description="Hotroom" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<!-- Update to here HA 20161123 -->	 
+	  </columns>
+    </table>
+	<!-- Update to here dd 20161111 -->
+	<!-- Update to here dd 20161115 -->
+	<!-- Update HA 20161116 Added Department and County -->
+	<!-- LS-11433 Add Department and County to Client Entity (client Specific) -->
+    <table Name="Client" PluralName="Clients" Description="Clients" NameProperty="Name">
+    <columns>
+        <column Name="Department" DataType="Text" Description="General Department" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CountyState" DataType="Text" Description="County or State" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	</columns>
+    </table>
+	<!-- update to here HA  20161116 -->
+	<!-- LS-LS-12217 Link Product and SampleType -->
+	<table Name="SampleType" PluralName="SampleTypes" Description="Sample type table" NameProperty="Name">
+	<columns>
+		<column Name="ProductId" DataType="Link" Description="Product" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Product" />
+    </columns>
+	</table>
+	<!-- update to here HA  20170111 -->
+		<!-- LS-12217 HA  20170118 -->
+	<table Name="Specification" PluralName="Specifications" Description="Specifications" NameProperty="Name">
+	<columns>
+		<column Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+    </columns>
+	</table>
+	<!-- update to here HA  20170118 -->
+</tables>    
+</schema>

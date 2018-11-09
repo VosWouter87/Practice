@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Merck" Prefix="Merck">
+  <tables>
+	<table Name="AnimalEventType" PluralName="AnimalEventTypes" Description="AnimalEventType table" NameProperty="Name">
+      <columns>
+        <column Name="AnimalEventTypeId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" 	IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		<column Name="Name" DataType="Text" Description="Name of the AnimalEventType" IsPrimaryKey="false" AllowNull="false" IsUnique="true" Size="450" IsDiscriminator="false" IsIdentity="false" Precision="0" Scale="0" />
+		<column Name="Description" DataType="Text" Description="Description of the AnimalEventType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />    
+	  </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+	<table Name="Molecule" PluralName="Molecules" Description="Molecule table" NameProperty="Name">
+      <columns>
+        <column Name="MoleculeId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		<column Name="Name" DataType="Text" Description="Name of the Molecule" IsPrimaryKey="false" AllowNull="false" IsUnique="false" Size="450" IsDiscriminator="false" IsIdentity="false" Precision="0" Scale="0" />
+		<column Name="Description" DataType="Text" Description="Description of the Molecule" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" /><column Name="Class" DataType="Text" Description="Class of the Molecule" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />    
+		<column Name="ProductId" DataType="Link" Description="Product" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Product" />
+	  </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="PlaceOfBirth" PluralName="PlaceOfBirths" Description="PlaceOfBirth table" NameProperty="Value">
+      <columns>
+        <column Name="PlaceOfBirthId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		<column Name="SpeciesId" DataType="Link" Description="Specie" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Species" />
+		<column Name="Value" DataType="Text" Description="Value" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />        
+	  </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+	<table Name="NHPsource" PluralName="NHPsources" Description="NHPsource table" NameProperty="Value">
+      <columns>
+        <column Name="NHPsourceId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		<column Name="SpeciesId" DataType="Link" Description="Specie" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Species" />
+		<column Name="Value" DataType="Text" Description="Value" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />        
+	  </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+	<table Name="NHPgeneration" PluralName="NHPgenerations" Description="NHPgeneration table" NameProperty="Value">
+      <columns>
+        <column Name="NHPgenerationId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		<column Name="SpeciesId" DataType="Link" Description="Specie" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Species" />
+		<column Name="Value" DataType="Text" Description="Value" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />        
+	  </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+
+  <table Name="User">
+      <columns>
+        <column Name="GroupId" DataType="Link" Description="Group" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Group" />
+      </columns>
+    </table>
+    <table Name="Animal">
+      <columns>
+        <column Name="DateOfExit" DataType="Date" Description="DateOfExit" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DateOfArrivalReason" DataType="Text" Description="DateOfArrivalReason" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DateOfExitReason" DataType="Text" Description="DateOfExitReason" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SpeciesId" DataType="Link" Description="Specie" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Species" />
+		<column Name="Supplier" DataType="Text" Description="Supplier" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Responsible" DataType="Text" Description="Responsible" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Sale" DataType="Boolean" Description="Sale" IsPrimaryKey="false" AllowNull="false" DefaultValue="1" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="USDA" DataType="Text" Description="USDA" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Tattoo" DataType="Text" Description="Tattoo" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="MerckID" DataType="Text" Description="Merck ID" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Note" DataType="Text" Description="Note" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />		 
+	  </columns>	  
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+    <table Name="AnimalTreatmentGroupAnimal">
+      <columns>
+        <column Name="StartDateReason" DataType="Text" Description="StartDateReason" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="EndDateReason" DataType="Text" Description="EndDateReason" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC01" DataType="Phrase" Description="LegalRegistration Code 01" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 01" />
+		<column Name="LC03" DataType="Phrase" Description="LegalRegistration Code 03" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 03" />
+		<column Name="LC04" DataType="Text" Description="LegalRegistration Code 04" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC05" DataType="Phrase" Description="LegalRegistration Code 05" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 05" />
+		<column Name="LC06" DataType="Text" Description="LegalRegistration Code 06" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC07" DataType="Phrase" Description="LegalRegistration Code 07" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 07" />
+		<column Name="LC08" DataType="Phrase" Description="LegalRegistration Code 08" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 08" />
+		<column Name="LC09" DataType="Phrase" Description="LegalRegistration Code 09" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 09" />
+		<column Name="LC10" DataType="Phrase" Description="LegalRegistration Code 10" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 10" />
+		<column Name="LC11" DataType="Phrase" Description="LegalRegistration Code 11" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 11" />
+		<column Name="LC12" DataType="Phrase" Description="LegalRegistration Code 12" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 12" />
+		<column Name="LC13" DataType="Phrase" Description="LegalRegistration Code 13" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 13" />
+		<column Name="LC14" DataType="Text" Description="LegalRegistration Code 14" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC15" DataType="Text" Description="LegalRegistration Code 15" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC16" DataType="Text" Description="LegalRegistration Code 16" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC17" DataType="Text" Description="LegalRegistration Code 17" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+    	<column Name="Status" DataType="Phrase" Description="Status" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="AnimalTreatmentGroupAnimal.Status" />
+		<column Name="PainCategory" DataType="Phrase" Description="PainCategory" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="AnimalTreatmentGroupAnimal.PainCategory" />
+		<column prefix="Merck" Name="PlaceOfBirthId" DataType="Link" Description="PlaceOfBirth" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Merck.PlaceOfBirth" />
+		<column prefix="Merck" Name="NHPsourceId" DataType="Link" Description="NHPsource" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Merck.NHPsource" />
+		<column prefix="Merck" Name="NHPgenerationId" DataType="Link" Description="NHPgeneration" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Merck.NHPgeneration" />
+		<column Name="GeneticStatus" DataType="Phrase" Description="GeneticStatus" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="GeneticStatus" />
+		<column Name="NewGeneticLine" DataType="Phrase" Description="NewGeneticLine" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="NewGeneticLine" />
+		<column prefix="Merck" Name="NHPpurposeId" DataType="Link" Description="NHPpurpose" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Merck.NHPpurpose" />
+		<column Name="OtherPurpose" DataType="Text" Description="OtherPurpose" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="TestingByLegislation" DataType="Phrase" Description="TestingByLegislation" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="TestingByLegislation" />
+		<column Name="OtherLegislation" DataType="Text" Description="OtherLegislation" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LegislativeRequirements" DataType="Phrase" Description="LegislativeRequirements" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LegislativeRequirements" />
+		<column Name="Severity" DataType="Phrase" Description="Severity" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="Severity" />
+		<column Name="Purpose2" DataType="Phrase" Description="Purpose2" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="Purpose2" />
+		<column Name="Purpose3" DataType="Phrase" Description="Purpose3" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="Purpose2" />
+		<column Name="Note" DataType="Text" Description="Note" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />		 		
+	</columns>
+    </table>
+    <table Name="Sample">
+      <columns>
+        <column Name="LocationId" DataType="Link" Description="Location Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+		<column Name="Category" DataType="Phrase" Description="Category" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LotNumber" DataType="Text" Description="LotNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="ProjectId" DataType="Text" Description="ProjectId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Notebook" DataType="Text" Description="Notebook" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="StorageCondition" DataType="Phrase" Description="StorageCondition" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Amount" DataType="Number" Description="Amount" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="AmountUnitId" DataType="Link" Description="AmountUnit" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Unit" />
+		<column Name="OwnedById" DataType="Link" Description="OwnedBy" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		<column Name="ExperiesOn" DataType="Date" Description="Experies on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="LocationItem">
+      <columns>
+        <column Name="OrderNumber" DataType="Number" Description="OrderNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="LocationItemType">
+      <columns>
+        <column Name="FillPattern" DataType="Text" Description="FillPattern" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="Experiment">
+      <columns>
+        <column Name="TestTypeId" DataType="Link" Description="TestType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="TestType" />
+        <column Name="RequestingDepartmentId" DataType="Link" Description="Requesting department" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+		<column Name="Pharmacovigilance" DataType="Phrase" Description="Pharmacovigilance" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="QualityAssurance" DataType="Boolean" Description="QualityAssurance" IsPrimaryKey="false" AllowNull="false" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Sponsor" DataType="Text" Description="Sponsor" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="EthicalApproval" DataType="Boolean" Description="EthicalApproval" IsPrimaryKey="false" AllowNull="false" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Monitor" DataType="Text" Description="Monitor" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="PrimaryInvestigator" DataType="Text" Description="PrimaryInvestigator" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Outsourced" DataType="Boolean" Description="Outsourced" IsPrimaryKey="false" AllowNull="false" DefaultValue="0" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LicenseCode" DataType="Text" Description="LicenseCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />        
+		<column Name="InternalRnDprojectcode" DataType="Text" Description="Internal RnD project code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />        
+		<column Name="NationalRegistration" DataType="Text" Description="•	National registration or reporting codes" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LegalCode" DataType="Text" Description="LegalCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />        
+		</columns>		
+    </table>
+    <table Name="AnimalTreatmentGroup">
+      <columns>
+        <column Name="LC01" DataType="Phrase" Description="Estimated LegalRegistration Code 01" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 01" />
+        <column Name="LC03" DataType="Phrase" Description="Estimated LegalRegistration Code 03" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 03" />
+        <column Name="LC04" DataType="Text" Description="Estimated LegalRegistration Code 04" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LC05" DataType="Phrase" Description="Estimated LegalRegistration Code 05" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 05" />
+        <column Name="LC06" DataType="Text" Description="Estimated LegalRegistration Code 06" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LC07" DataType="Phrase" Description="Estimated LegalRegistration Code 07" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 07" />
+        <column Name="LC08" DataType="Phrase" Description="Estimated LegalRegistration Code 08" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 08" />
+        <column Name="LC09" DataType="Phrase" Description="Estimated LegalRegistration Code 09" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 09" />
+        <column Name="LC10" DataType="Phrase" Description="Estimated LegalRegistration Code 10" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 10" />
+        <column Name="LC11" DataType="Phrase" Description="Estimated LegalRegistration Code 11" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 11" />
+        <column Name="LC12" DataType="Phrase" Description="Estimated LegalRegistration Code 12" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 12" />
+        <column Name="LC13" DataType="Phrase" Description="Estimated LegalRegistration Code 13" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 13" />
+        <column Name="LC14" DataType="Text" Description="Estimated LegalRegistration Code 14" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LC15" DataType="Text" Description="Estimated LegalRegistration Code 15" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LC16" DataType="Text" Description="Estimated LegalRegistration Code 16" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LC17" DataType="Text" Description="Estimated LegalRegistration Code 17" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="Sex" DataType="Phrase" Description="Sex" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />        
+		<column Name="Age" DataType="Number" Description="Age" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />        		
+    </columns>
+    </table>
+	<table Name="AnimalTreatmentSubGroup">
+      <columns>
+    	<column Name="LC01" DataType="Phrase" Description="LegalRegistration Code 01" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 01" />
+		<column Name="LC03" DataType="Phrase" Description="LegalRegistration Code 03" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 03" />
+		<column Name="LC04" DataType="Text" Description="LegalRegistration Code 04" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC05" DataType="Phrase" Description="LegalRegistration Code 05" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 05" />
+		<column Name="LC06" DataType="Text" Description="LegalRegistration Code 06" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC07" DataType="Phrase" Description="LegalRegistration Code 07" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 07" />
+		<column Name="LC08" DataType="Phrase" Description="LegalRegistration Code 08" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 08" />
+		<column Name="LC09" DataType="Phrase" Description="LegalRegistration Code 09" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 09" />
+		<column Name="LC10" DataType="Phrase" Description="LegalRegistration Code 10" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 10" />
+		<column Name="LC11" DataType="Phrase" Description="LegalRegistration Code 11" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 11" />
+		<column Name="LC12" DataType="Phrase" Description="LegalRegistration Code 12" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 12" />
+		<column Name="LC13" DataType="Phrase" Description="LegalRegistration Code 13" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 13" />
+		<column Name="LC14" DataType="Text" Description="LegalRegistration Code 14" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC15" DataType="Text" Description="LegalRegistration Code 15" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC16" DataType="Text" Description="LegalRegistration Code 16" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC17" DataType="Text" Description="LegalRegistration Code 17" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	  </columns>
+    </table>
+	<table Name="Species">
+      <columns>
+		<column Name="nl" DataType="Text" Description="Dutch text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="en" DataType="Text" Description="English text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="de" DataType="Text" Description="German text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="fr" DataType="Text" Description="French text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="es" DataType="Text" Description="Spanish text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="it" DataType="Text" Description="Italian text" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LegalDE" DataType="Text" Description="German legaltext" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />     
+      </columns>  
+	</table>
+	<table Name="AnimalEvent" PluralName="AnimalEvents" Description="AnimalEvent table" NameProperty="AnimalEventId">
+      <columns>
+        <column Name="AnimalEventId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		<column prefix="Merck" Name="AnimalEventTypeId" DataType="Link" Description="AnimalEventType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Merck.AnimalEventType" />
+		<column Name="EventType" DataType="Text" Description="EventType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />  
+		<column Name="Code" DataType="Text" Description="Code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />  
+		<column Name="Comment" DataType="Text" Description="Comment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />  
+		<column Name="UserId" DataType="Link" Description="User" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="StartDate" DataType="Date" Description="StartDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="EndDate" DataType="Date" Description="EndDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExpiryDate" DataType="Date" Description="ExpiryDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="ProductId" DataType="Link" Description="Product" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Product" />
+        <column Name="Dose" DataType="Text" Description="Dose" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />  
+        <column Name="Batchnumber" DataType="Text" Description="Batchnumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AnimalTreatmentGroupId" DataType="Link" Description="AnimalTreatmentGroup" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="AnimalTreatmentGroup" />
+        <column Name="AnimalTreatmentGroupAnimalId" DataType="Link" Description="AnimalTreatmentGroupAnimal" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="AnimalTreatmentGroupAnimal" />        
+		<column Name="AnimalId" DataType="Link" Description="Animal" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Animal" />
+		<column Name="ExperimentId" DataType="Link" Description="Experiment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />		</columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+	
+    <table Name="Project">
+      <columns>
+        <column Name="UseAccordingTo" DataType="Phrase" Description="UseAccordingTo" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="UseAccordingTo" />
+		<column Name="Method" DataType="Text" Description="Method" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />        
+	  </columns>
+    </table>
+	<table Name="NHPpurpose" PluralName="NHPpurposes" Description="NHPpurpose table" NameProperty="Value">
+      <columns>
+        <column Name="NHPpurposeId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+		<column Name="Value" DataType="Text" Description="Value" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />        
+	  </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+    </table>
+	<table Name="AnimalProcedureAnimal">
+      <columns>
+	     <column Name="LC01" DataType="Phrase" Description="LegalRegistration Code 01" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 01" />
+		<column Name="LC03" DataType="Phrase" Description="LegalRegistration Code 03" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 03" />
+		<column Name="LC04" DataType="Text" Description="LegalRegistration Code 04" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC05" DataType="Phrase" Description="LegalRegistration Code 05" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 05" />
+		<column Name="LC06" DataType="Text" Description="LegalRegistration Code 06" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC07" DataType="Phrase" Description="LegalRegistration Code 07" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 07" />
+		<column Name="LC08" DataType="Phrase" Description="LegalRegistration Code 08" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 08" />
+		<column Name="LC09" DataType="Phrase" Description="LegalRegistration Code 09" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 09" />
+		<column Name="LC10" DataType="Phrase" Description="LegalRegistration Code 10" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 10" />
+		<column Name="LC11" DataType="Phrase" Description="LegalRegistration Code 11" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 11" />
+		<column Name="LC12" DataType="Phrase" Description="LegalRegistration Code 12" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 12" />
+		<column Name="LC13" DataType="Phrase" Description="LegalRegistration Code 13" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 13" />
+		<column Name="LC14" DataType="Text" Description="LegalRegistration Code 14" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC15" DataType="Text" Description="LegalRegistration Code 15" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC16" DataType="Text" Description="LegalRegistration Code 16" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		<column Name="LC17" DataType="Text" Description="LegalRegistration Code 17" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	  </columns>
+	</table>
+	<table Name="AnimalTreatmentFinalGroup" PluralName="AnimalTreatmentFinalGroups" Description="AnimalTreatmentFinalGroup table" NameProperty="Name">
+      <columns>
+        <column Name="AnimalTreatmentFinalGroupId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExperimentId" DataType="Link" Description="Experiment Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Experiment" />
+        <column Name="NumberOfAnimals" DataType="Number" Description="NumberOfAnimals" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SpeciesId" DataType="Link" Description="Species" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Species" />
+		<column Name="LC01" DataType="Phrase" Description="Estimated LegalRegistration Code 01" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 01" />
+        <column Name="LC03" DataType="Phrase" Description="Estimated LegalRegistration Code 03" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 03" />
+        <column Name="LC04" DataType="Text" Description="Estimated LegalRegistration Code 04" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LC05" DataType="Phrase" Description="Estimated LegalRegistration Code 05" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 05" />
+        <column Name="LC06" DataType="Text" Description="Estimated LegalRegistration Code 06" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LC07" DataType="Phrase" Description="Estimated LegalRegistration Code 07" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 07" />
+        <column Name="LC08" DataType="Phrase" Description="Estimated LegalRegistration Code 08" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 08" />
+        <column Name="LC09" DataType="Phrase" Description="Estimated LegalRegistration Code 09" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 09" />
+        <column Name="LC10" DataType="Phrase" Description="Estimated LegalRegistration Code 10" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 10" />
+        <column Name="LC11" DataType="Phrase" Description="Estimated LegalRegistration Code 11" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 11" />
+        <column Name="LC12" DataType="Phrase" Description="Estimated LegalRegistration Code 12" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 12" />
+        <column Name="LC13" DataType="Phrase" Description="Estimated LegalRegistration Code 13" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="LC 13" />
+        <column Name="LC14" DataType="Text" Description="Estimated LegalRegistration Code 14" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LC15" DataType="Text" Description="Estimated LegalRegistration Code 15" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LC16" DataType="Text" Description="Estimated LegalRegistration Code 16" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LC17" DataType="Text" Description="Estimated LegalRegistration Code 17" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	  </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ExperimentId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>SpeciesId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+	
+  </tables>
+  
+  <phrases>
+	<phrase Name="UseAccordingTo" NoEnumeration="true">
+      <phraseItems>
+        <phraseItem Value="T1" Text="T1: nach § 7 Absatz 2 TierSchG" OrderNumber="1" />
+        <phraseItem Value="T2" Text="T2: nach § 4 Absatz 3 TierSchG" OrderNumber="2" />
+      </phraseItems>
+    </phrase>
+	<phrase Name="GeneticStatus" NoEnumeration="true">
+      <phraseItems>
+        <phraseItem Value="GS1" Text="(GS1) Genetisch nicht verändert" OrderNumber="1" />
+        <phraseItem Value="GS2" Text="(GS2) Genetisch verändert ohne pathologischen Phänotyp" OrderNumber="2" />
+		<phraseItem Value="GS3" Text="(GS3) Genetisch verändert mit pathologischem Phänotyp" OrderNumber="3" />
+      </phraseItems>
+    </phrase>
+	<phrase Name="NewGeneticLine" NoEnumeration="true">
+      <phraseItems>
+        <phraseItem Value="N" Text="[N] Nein" OrderNumber="1" />
+        <phraseItem Value="Y" Text="[Y] Ja" OrderNumber="2" />
+      </phraseItems>
+    </phrase>
+	<phrase Name="TestingByLegislation" NoEnumeration="true">
+      <phraseItems>
+		<phraseItem Value="LT1" Text="[LT1] Vorschriften für Humanarzneimittel" OrderNumber="1" />
+		<phraseItem Value="LT2" Text="[LT2] Vorschriften für Tierarzneimittel und ihre Rückstände" OrderNumber="2" />
+		<phraseItem Value="LT3" Text="[LT3] Vorschriften für Medizinprodukte" OrderNumber="3" />
+		<phraseItem Value="LT4" Text="[LT4] Vorschriften für Industriechemikalien" OrderNumber="4" />
+		<phraseItem Value="LT5" Text="[LT5] Vorschriften für Pflanzenschutzmittel" OrderNumber="5" />
+		<phraseItem Value="LT6" Text="[LT6] Vorschriften für Biozidprodukte" OrderNumber="6" />
+		<phraseItem Value="LT7" Text="[LT7] Vorschriften für Lebensmittel, einschließlich Materialien, die mit Lebensmitteln in Berührung kommen" OrderNumber="7" />
+		<phraseItem Value="LT8" Text="[LT8] Vorschriften für Futtermittel, einschließlich Vorschriften für die Sicherheit von Zieltieren, Arbeitnehmern und Umwelt" OrderNumber="8" />
+		<phraseItem Value="LT9" Text="[LT9] Vorschriften für Kosmetikprodukte" OrderNumber="9" />
+		<phraseItem Value="LT10" Text="[LT10] Andere" OrderNumber="10" />
+      </phraseItems>
+    </phrase>
+	<phrase Name="LegislativeRequirements" NoEnumeration="true">
+      <phraseItems>
+		<phraseItem Value="LO1" Text="[LO1] Vorschriften, die EU-Anforderungen erfüllen" OrderNumber="1" />
+		<phraseItem Value="LO2" Text="[LO2] Vorschriften, die nur nationale Anforderungen erfüllen" OrderNumber="2" />
+		<phraseItem Value="LO3" Text="[LO3] Vorschriften, die EU-externe Anforderungen erfüllen" OrderNumber="3" />
+      </phraseItems>
+    </phrase>
+	<phrase Name="Severity" NoEnumeration="true">
+      <phraseItems>
+		<phraseItem Value="SV1" Text="[SV1] Keine Wiederherstellung der Lebensfunktion" OrderNumber="1" />
+		<phraseItem Value="SV2" Text="[SV2] Gering (höchstens)" OrderNumber="2" />
+		<phraseItem Value="SV3" Text="[SV3] Mittel" OrderNumber="3" />
+		<phraseItem Value="SV4" Text="[SV4] Schwer" OrderNumber="4" />
+      </phraseItems>
+    </phrase>
+	<phrase Name="Purpose2" NoEnumeration="true">
+      <phraseItems>
+		<phraseItem Value="P1" Text="Grundlagenforschung: Onkologie" OrderNumber="1" />
+		<phraseItem Value="P2" Text="Grundlagenforschung: Kardiovaskuläres System (Blut- und Lymphgefäße)" OrderNumber="2" />
+		<phraseItem Value="P3" Text="Grundlagenforschung: Nervensystem" OrderNumber="3" />
+		<phraseItem Value="P4" Text="Grundlagenforschung: Atmungssystem" OrderNumber="4" />
+		<phraseItem Value="P5" Text="Grundlagenforschung: Gastrointestinales System, einschließlich Leber" OrderNumber="5" />
+		<phraseItem Value="P6" Text="Grundlagenforschung: Muskuloskelettales System" OrderNumber="6" />
+		<phraseItem Value="P7" Text="Grundlagenforschung: Immunsystem" OrderNumber="7" />
+		<phraseItem Value="P8" Text="Grundlagenforschung: Urogenitales / Fortpflanzungssytem" OrderNumber="8" />
+		<phraseItem Value="P9" Text="Grundlagenforschung: Sinnesorgane (Haut, Augen und Ohren)" OrderNumber="9" />
+		<phraseItem Value="P10" Text="Grundlagenforschung: Endokrines System / Stoffwechsel" OrderNumber="10" />
+		<phraseItem Value="P11" Text="Grundlagenforschung: Ethologie / Tierverhalten / Tierbiologie" OrderNumber="11" />
+		<phraseItem Value="P12" Text="Grundlagenforschung: Hochschulausbildung bzw. Schulung zum Erwerb, zur Erhaltung oder zur Verbesserung beruflicher Fähigkeiten" OrderNumber="12" />
+		<phraseItem Value="P13" Text="Translationale/Angewandte Forschung: Krebserkrankungen des Menschen" OrderNumber="13" />
+		<phraseItem Value="P14" Text="Translationale/Angewandte Forschung: Infektionskrankheiten des Menschen" OrderNumber="14" />
+		<phraseItem Value="P15" Text="Translationale/Angewandte Forschung: Kardiovaskuläre Erkrankungen des Menschen" OrderNumber="15" />
+		<phraseItem Value="P16" Text="Translationale/Angewandte Forschung: Nerven- und Geisteserkrankungen des Menschen" OrderNumber="16" />
+		<phraseItem Value="P17" Text="Translationale/Angewandte Forschung: Atemwegserkrankungen des Menschen" OrderNumber="17" />
+		<phraseItem Value="P18" Text="Translationale/Angewandte Forschung: Gastrointestinale Erkrankungen des Menschen, einschließlich Leber" OrderNumber="18" />
+		<phraseItem Value="P19" Text="Translationale/Angewandte Forschung: Muskuloskelettale Erkrankungen des Menschen" OrderNumber="19" />
+		<phraseItem Value="P20" Text="Translationale/Angewandte Forschung: Immunerkrankungen des Menschen" OrderNumber="20" />
+		<phraseItem Value="P21" Text="Translationale/Angewandte Forschung: Erkrankungen des urogenitalen / Fortpflanzungssytems des Menschen" OrderNumber="21" />
+		<phraseItem Value="P22" Text="Translationale/Angewandte Forschung: Erkrankungen der Sinnesorgane des Menschen (Haut, Augen und Ohren)" OrderNumber="22" />
+		<phraseItem Value="P23" Text="Translationale/Angewandte Forschung: Erkrankungen des endokrinen Systems / des Stoffwechselsystem des Menschen" OrderNumber="23" />
+		<phraseItem Value="P24" Text="Translationale/Angewandte Forschung: Andere Humanerkrankungen" OrderNumber="24" />
+		<phraseItem Value="P25" Text="Translationale/Angewandte Forschung: Tiererkrankungen- und krankheiten" OrderNumber="25" />
+		<phraseItem Value="P26" Text="Translationale/Angewandte Forschung: Tierschutz" OrderNumber="26" />
+		<phraseItem Value="P27" Text="Translationale/Angewandte Forschung: Krankheitsdiagnose" OrderNumber="27" />
+		<phraseItem Value="P28" Text="Translationale/Angewandte Forschung: Pflanzenkrankheiten" OrderNumber="28" />
+		<phraseItem Value="P29" Text="Translationale/Angewandte Forschung: Nicht regulatorische Toxikologie und Ökotoxikologie" OrderNumber="29" />
+		<phraseItem Value="P30" Text="Vewendung zu regulatorischen Zwecken" OrderNumber="30" /> 
+		<phraseItem Value="P31" Text="Verwendung zur Routineproduktion" OrderNumber="31" />
+      </phraseItems>
+    </phrase>
+  </phrases>
+</schema>

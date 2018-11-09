@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Vito" Prefix="Vito">
+<tables> 
+    <!-- 20170831: ES: LS-16724 schema changes ivention custom for demo -->
+    <table Name="Sample" PluralName="Samples" Description="Sample table" NameProperty="Name">
+      <columns>
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+      </columns>
+    </table>
+    <table Name="Material" PluralName="Materials" Description="Materials" NameProperty="Name">
+        <columns>
+        <column Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+        </columns>
+    </table>
+        <table Name="Product" Pluralname="Products" Description="Products" nameProperty="Name">
+      <columns>
+        <column Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+      </columns>
+    </table>
+</tables>    
+</schema>

@@ -224,36 +224,65 @@ Notes
         */
         public static string SumOfDivided(int[] list)
         {
+            var sb = new StringBuilder();
+            var primes = Algorithms.GetPrimeFactors(list.Max());
+
+            foreach(var number in list)
+            {
+                sb.AppendFormat("({0}, {1})", number, primes.Where(p => (number % p) == 0).Sum());
+            }
+
             return string.Empty;
         }
-
+        
         /*
         http://www.codewars.com/kata/51b62bf6a9c58071c600001b/train/csharp
         Roman Numerals Encoder
-    Create a function taking a positive integer as its parameter and returning a string containing the Roman Numeral representation of that integer.
-
-Modern Roman numerals are written by expressing each digit separately starting with the left most digit and skipping any digit with a value of zero. In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC. 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each Roman symbol in descending order: MDCLXVI.
+        Create a function taking a positive integer as its parameter and returning a string containing the Roman Numeral representation of that integer.
+        Modern Roman numerals are written by expressing each digit separately starting with the left most digit and skipping any digit with a value of zero. In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC. 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each Roman symbol in descending order: MDCLXVI.
         */
         public static string ConvertDecimalToRoman(int n)
         {
             var symbols = GetSymbols();
             var current = n;
             var roman = string.Empty;
-
-            while (current > 0)
+            KeyValuePair<int, char> previous;
+            
+            for (var i = 0; i < symbols.Count; i++)
             {
-                var i = symbols.Count - 1;
-                foreach(var symbol in symbols)
+                var symbol = symbols.ElementAt(i);
+                var div = Math.DivRem(current, symbol.Key, out int remainder);
+                
+                if (div > 0)
                 {
-                    var div = Math.DivRem(current, symbol.Key, out int remainder);
+                    // Overwrite the current value with the remainder.
+                    current = remainder;
+                    
+                    // Now we have to process the div.
+                    for (var j = i; j > 0; j--)
+                    {
 
-                    for(var j = 0; j < div; j++)
+                    }
+
+                    if (div > 0 && previous.Key > 0 && symbol.Key * div >= previous.Key)
                     {
                         roman += symbol.Value;
+                        roman += previous.Value;
+                    }
+                    else if (div == 4)
+                    {
+
+                    }
+                    else
+                    {
+                        for (var j = 0; j < div; j++)
+                        {
+                            roman += symbol.Value;
+                        }
                     }
                 }
 
-                i--;
+                previous = symbol;
             }
 
             return roman;
@@ -263,25 +292,22 @@ Modern Roman numerals are written by expressing each digit separately starting w
         {
             var symbols = GetRomanValues();
             var total = 0;
-            var current = 0;
-            var lastValue = 0;
+            var lastValue = -1;
 
             foreach(var letter in roman)
             {
                 var value = symbols[letter];
-                if (value == lastValue)
+                total += value;
+                if (lastValue >= 0 && value > lastValue)
                 {
-                    current += value;
+                    // The value has been added, that was incorrect.
+                    total -= lastValue * 2;
                 }
-                else if (value > lastValue)
-                {
-                    total -= value;
-                }
-                else if (value < lastValue)
-                {
 
-                }
+                lastValue = value;
             }
+
+            return total;
         }
 
         private static Dictionary<int, char> _symbols;
@@ -293,13 +319,13 @@ Modern Roman numerals are written by expressing each digit separately starting w
             {
                 _symbols = new Dictionary<int, char>
                 {
-                    { 1, 'I' },
-                    { 5, 'V' },
-                    { 10, 'X' },
-                    { 50, 'L' },
-                    { 100, 'C' },
+                    { 1000, 'M' },
                     { 500, 'D' },
-                    { 1000, 'M' }
+                    { 100, 'C' },
+                    { 50, 'L' },
+                    { 10, 'X' },
+                    { 5, 'V' },
+                    { 1, 'I' }
                 };
             }
 

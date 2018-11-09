@@ -67,12 +67,35 @@
         }
 
         [TestCase(1, "I")]
+        [TestCase(5, "V")]
+        [TestCase(10, "X")]
+        [TestCase(50, "L")]
+        [TestCase(100, "C")]
+        [TestCase(500, "D")]
+        [TestCase(1000, "M")]
+        [TestCase(4, "IV")]
         [TestCase(1990, "MCMXC")]
         [TestCase(1666, "MDCLXVI")]
         [TestCase(1444, "MIVXLCD")]
-        public void RomanTest(int value, string expected)
+        public void DecimalToRomanTest(int value, string expected)
         {
-            Assert.AreEqual(expected, Kata.ConvertToRoman(value));
+            Assert.AreEqual(expected, Kata.ConvertDecimalToRoman(value));
+        }
+
+        [TestCase("I", 1)]
+        [TestCase("V", 5)]
+        [TestCase("X", 10)]
+        [TestCase("L", 50)]
+        [TestCase("C", 100)]
+        [TestCase("D", 500)]
+        [TestCase("M", 1000)]
+        [TestCase("IV", 4)]
+        [TestCase("MCMXC", 1990)]
+        [TestCase("MDCLXVI", 1666)]
+        [TestCase("MIVXLCD", 1444)]
+        public void RomanToDecimalTest(string value, int expected)
+        {
+            Assert.AreEqual(expected, Kata.ConvertRomanToDecimal(value));
         }
     }
 }

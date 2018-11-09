@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Tiofarma" Prefix="Tiofarma">
+<tables> 
+    <table Name="Sample" PluralName="Samples" Description="Sample table" NameProperty="Name">
+      <columns>
+        <column prefix="Tiofarma" Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+      </columns>
+    </table>
+</tables>    
+</schema>

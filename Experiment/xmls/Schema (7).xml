@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Alpha" Prefix="iva">
+  <tables>
+    <table Name="Note">
+      <columns>
+        <column Name="ActivityDate" DataType="Date" Description="Date activity took place" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Completed" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="Completed" DataType="Boolean"/>
+      </columns>
+    </table>
+    <table Name="Client">
+      <columns>
+        <column Name="Website" DataType="Text" Description="Client website" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ParentCompany" DataType="Text" Description="Parent Company" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AccountManager" Phrase="Account Manager" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="Account Manager" DataType="Phrase"/>
+        <column Name="Industry" Phrase="Industry" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="Industry" DataType="Phrase"/>
+        <column Name="LabType" Phrase="Lab Type" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="Lab Type" DataType="Phrase"/>
+        <column Name="CurrentSystems" Phrase="LIMS Systems" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="LIMS Systems" DataType="Phrase"/>
+        <column Name="SalesCampaign" Phrase="Sales Campaign" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="Sales Campaign" DataType="Phrase"/>
+      </columns>
+    </table>
+	<table Name="JobPosition">
+		<columns>
+			<column Name="KnowledgeSkills" DataType="Text" Description="KnowledgeSkills" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		</columns>
+	</table>
+	<table Name="ClientContact">
+      <columns>
+        <column Name="Gender" Phrase="Client Gender" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="Gender" DataType="Phrase"/>
+        <column Name="ContactType" Phrase="ContactType" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="Contact Type" DataType="Phrase"/>
+        <column Name="JobTitel" DataType="Text" Description="Job Title" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SurName" DataType="Text" Description="Last Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Department" DataType="Text" Description="Department" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SocialMedia" DataType="Text" Description="Department" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="User">
+      <columns>
+        <column Name="EmploymentStartDate" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="Start date of employment" DataType="Date"/>
+        <column Name="EmploymentEndDate" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="End date of employment" DataType="Date"/>
+      </columns>
+    </table>
+    <table Name="DocumentVersion">
+      <columns>
+        <column Name="RequestedAuthoriserId" Description="The person who is requested to authorise the document" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" DataType="Link" ReferenceTypeName="User"/>
+      </columns>
+    </table>
+    <table Name="Opportunity" PluralName="Opportunities" Description="Opportunities" NameProperty="OpportunityId">
+      <columns>
+        <column Name="OpportunityId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Type" Phrase="OpportunityType" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="Type" DataType="Phrase"/>
+        <column Name="PipelineStage" Phrase="PipelineStage" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="PipelineStage" DataType="Phrase"/>
+        <column Name="ExpectedClosureDate" DataType="Date" Description="ExpectedClosureDate" IsPrimaryKey="false" AllowNull="true" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Probability" DataType="Phrase" Description="Probability" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Licenses" DataType="Number" Description="Licenses" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Services" DataType="Number" Description="Services" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Maintenance" DataType="Number" Description="Maintenance" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Hosting" DataType="Number" Description="Hosting" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="WeightedForecast" DataType="Number" Description="WeightedForecast" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+      </columns>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+     <table Name="Asset" PluralName="Assets" Description="Assets" NameProperty="Name">
+      <columns>
+        <column Name="AssetId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="OwnerId" DataType="Link" Description="User who ownes the asset" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name of the asset" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Serial" DataType="Text" Description="Serial number of the asset" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Description" DataType="Text" Description="Description" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Type" Phrase="Alpha.AssetType" Scale="0" Precision="0" Size="0" IsIdentity="false" IsDiscriminator="false" IsUnique="false" AllowNull="true" IsPrimaryKey="false" Description="Type" DataType="Phrase"/>
+        <column Name="StartDate" DataType="Date" Description="StartDate" IsPrimaryKey="false" AllowNull="true" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="EndDate" DataType="Date" Description="EndDate" IsPrimaryKey="false" AllowNull="true" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IHasNotes</interface>
+        <interface>IDeletable</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>CreatedById</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>ModifiedById</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+  </tables>
+</schema>

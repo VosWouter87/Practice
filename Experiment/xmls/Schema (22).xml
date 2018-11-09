@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Roba" Prefix="Roba" UpgradeActionIndex="22">
+  <tables>
+    <table Name="Client" PluralName="Clients" Description="Clients" NameProperty="Name">
+      <columns>
+        <column Name="Btw" DataType="Phrase" Description="Btw" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="BTW" DefaultValue="None" />
+        <column Name="Vervoerder" DataType="Boolean" Description="Vervoerder" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+        <column Name="Afnemer" DataType="Boolean" Description="Afnemer" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+        <column Name="Producent" DataType="Boolean" Description="Producent" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+        <column Name="BRSNummer" DataType="Text" Description="Bedrijfs Relatie Nummer" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="(default)" />
+        <column Name="KvkNummer" DataType="Text" Description="Kvk nummer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="50" Precision="0" Scale="0" DefaultValue="" />
+        <!-- 20140821: HG: LS-2158 added AccountNumber field -->
+        <column Name="AccountNumber" DataType="Number" Description="Account Number" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+        <column Name="ExportTo" DataType="Phrase" Description="Export VDM Data To" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="ExportTypeVDM" DefaultValue="None" />
+      </columns>
+    </table>
+    <table Name="ClientBsnumber" PluralName="ClientBsnumbers" Description="ClientBsnumbers" NameProperty="Name">
+      <columns>
+        <column Name="ClientBsnumberId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Client" />
+        <column Name="Active" DataType="Boolean" Description="Afnemer" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="1" />
+      </columns>
+    </table>
+    <!-- 20140821: HG: LS-2154 added VdmNumber, JarNumber, LidNummer and Weight fields -->
+    <table Name="Container" PluralName="Containers" Description="Container Table" NameProperty="Name">
+      <columns>
+        <!-- 20150226: HG: LS-4215: make VdmNumber field null able -->
+        <column Name="VdmNumber" DataType="Number" Description="Vdm Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="JarNumber" DataType="Number" Description="Jar Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LidNumber" DataType="Number" Description="Lid Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+        <column Name="Weight" DataType="Decimal" Description="Weight" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+      </columns>
+    </table>
+    <!-- 20140821: HG: LS-2158 added Customer, Carrier, Transport, Sampling, Commentary, Other and Supplier tables -->
+    <!-- 20150212: HG: LS-4217: make name property to AccountNumber -->
+    <table Name="Customer" PluralName="Customers" Description="Customers" NameProperty="AccountNumber">
+      <columns>
+        <column Name="CustomerId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="AccountNumber" DataType="Text" Description="Account Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ZipCode" DataType="Text" Description="Zip code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Address" DataType="Text" Description="Address" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <!-- 20141110: CS: LS-2158: make StreetName, Place and StreetNumber Optional -->
+        <column Name="StreetName" DataType="Text" Description="Name of the street" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Place" DataType="Text" Description="Name of the place" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StreetNumber" DataType="Text" Description="Street number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="KvkNumber" DataType="Text" Description="Kvk number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="50" Precision="0" Scale="0" DefaultValue="" />
+        <column Name="Email" DataType="Text" Description="Email" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="" />
+      </columns>
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <!-- 20150212: HG: LS-4217: make name property to AccountNumber -->
+    <table Name="Carrier" PluralName="Carriers" Description="Carriers" NameProperty="AccountNumber">
+      <columns>
+        <column Name="CarrierId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="AccountNumber" DataType="Text" Description="Account Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CMR" DataType="Number" Description="CMR" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ZipCode" DataType="Text" Description="Zip code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Address" DataType="Text" Description="Address" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StreetName" DataType="Text" Description="Name of the street" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Place" DataType="Text" Description="Name of the place" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StreetNumber" DataType="Text" Description="Street number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="KvkNumber" DataType="Text" Description="Kvk number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="50" Precision="0" Scale="0" DefaultValue="" />
+        <column Name="Email" DataType="Text" Description="Email" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="" />
+      </columns>
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="ReceivingSite" PluralName="ReceivingSites" Description="ReceivingSites" NameProperty="AccountNumber">
+      <columns>
+        <column Name="ReceivingSiteId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="AccountNumber" DataType="Text" Description="Account Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ZipCode" DataType="Text" Description="Zip code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Address" DataType="Text" Description="Address" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StreetName" DataType="Text" Description="Name of the street" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Place" DataType="Text" Description="Name of the place" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StreetNumber" DataType="Text" Description="Street number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="KvkNumber" DataType="Text" Description="Kvk number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="50" Precision="0" Scale="0" DefaultValue="" />
+        <column Name="Email" DataType="Text" Description="Email" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="" />
+      </columns>
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="Transport" PluralName="Transports" Description="Transports" NameProperty="VehicleRegistrationId">
+      <columns>
+        <column Name="TransportId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ZipCodeLoadingBerth" DataType="Text" Description="Zip code loading berth" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LoadingDate" DataType="Date" Description="Loading date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LoadingTime" DataType="Time" Description="Loading time" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="EstimatedWeight" DataType="Decimal" Description="Estimated weight" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NetWeight" DataType="Decimal" Description="Net weight" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ZipCodeWharf" DataType="Text" Description="Zip code wharf" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="UnloadDate" DataType="Date" Description="Unload date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="UnloadTime" DataType="Time" Description="Unload time" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DeliveryNumber" DataType="Number" Description="Delivery number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SignDate" DataType="Date" Description="Sign date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DeliveryType" DataType="Text" Description="Delivery type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="AcceptionType" DataType="Text" Description="Delivery type" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PreviousReceiptNumber" DataType="Number" Description="Delivery number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="VehicleRegistrationId" DataType="Link" Description="Vehicle registration" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Roba.VehicleRegistration" />
+        <column Name="TrailerNumberId" DataType="Link" Description="Trailer number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Roba.TrailerRegistration" />
+      </columns>
+    </table>
+    <table Name="Sampling" PluralName="Samplings" Description="Samplings" NameProperty="SamplerCode">
+      <columns>
+        <column Name="SamplingId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="SamplerCode" DataType="Text" Description="Sampler code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="JarNumber" DataType="Number" Description="jar number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ContainerNumber" DataType="Number" Description="Container number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MixedSample" DataType="Phrase" Description="Mixed sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CodeLab" DataType="Text" Description="Code lab" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="L264" />
+        <column Name="KgPhosphate" DataType="Decimal" Description="Kg phosphate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="KgNitrate" DataType="Decimal" Description="Kg nitrate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="KgPotassium" DataType="Decimal" Description="Kg potassium" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ContainerId" DataType="Link" Description="Container" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Container" />
+
+        <!-- 20150722: HG: LS-5182 added VDMNumber field -->
+        <column Name="VDMNumber" DataType="Number" Description="VDM number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <table Name="Commentary" PluralName="Commentarys" Description="Commentarys" NameProperty="CommentaryId">
+      <columns>
+        <column Name="CommentaryId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Commentary1" DataType="Phrase" Description="Commentary 1" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Commentary2" DataType="Phrase" Description="Commentary 1" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Commentary3" DataType="Phrase" Description="Commentary 1" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Commentary4" DataType="Phrase" Description="Commentary 1" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <!-- 20150212: HG: LS-4217: make name property to AccountNumber -->
+    <table Name="Other" PluralName="Others" Description="Others" NameProperty="AccountNumber">
+      <columns>
+        <column Name="OtherId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="AccountNumber" DataType="Text" Description="Account Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StreetName" DataType="Text" Description="Name of the street" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Place" DataType="Text" Description="Name of the place" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StreetNumber" DataType="Text" Description="Street number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="KvkNumber" DataType="Text" Description="Kvk number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="50" Precision="0" Scale="0" DefaultValue="" />
+        <column Name="Email" DataType="Text" Description="Email" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="" />
+      </columns>
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="ProductKind" PluralName="ProductKinds" Description="ProductKinds" NameProperty="Name">
+      <columns>
+        <column Name="ProductKindId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ProductCode" DataType="Number" Description="ProductCode in SRTPR field" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Ratio" DataType="Number" Description="Ratio in SRTPR field" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TransportDocumentId" DataType="Link" Description="The document that needs it" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.TransportDocument" />
+        <column Name="ProductKindCode" DataType="Text" Description="Code in SRTPR field" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+    <!-- 20150212: HG: LS-4217: make name property to AccountNumber -->
+    <table Name="Supplier" PluralName="Suppliers" Description="Suppliers" NameProperty="AccountNumber">
+      <columns>
+        <column Name="SupplierId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="AccountNumber" DataType="Text" Description="Account Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ZipCode" DataType="Text" Description="Zip code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Address" DataType="Text" Description="Address" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StreetName" DataType="Text" Description="Name of the street" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Place" DataType="Text" Description="Name of the place" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StreetNumber" DataType="Text" Description="Street number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="KvkNumber" DataType="Text" Description="Kvk number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="50" Precision="0" Scale="0" DefaultValue="" />
+        <column Name="Email" DataType="Text" Description="Email" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="" />
+      </columns>
+      <interfaces>
+        <interface>IExternalRecord</interface>
+      </interfaces>
+    </table>
+    <table Name="TransportDocument" PluralName="TransportDocuments" Description="Table with TransportDocuments" NameProperty="TransportDocumentId">
+      <columns>
+        <column Name="TransportDocumentId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="DocumentId" DataType="Link" Description="Related document document" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Document" />
+
+        <column Name="MessageType" DataType="Text" Description="MessageType from TRANS field" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MessageFunction" DataType="Number" Description="MessageFunction from TRANS field" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MessageReference" DataType="Text" Description="MessageReference from TRANS field" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TransmitterId" DataType="Text" Description="TransmitterId from TRANS" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReceiverId" DataType="Text" Description="ReceiverId from TRANS field" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+
+        <column Name="TimeValue" DataType="Number" Description="Time value in file name" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SamplingId" DataType="Link" Description="Sampling" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.Sampling" />
+
+        <!-- 20150127: HG: LS-4217 make supplier, customer, carrier and transport nullable -->
+        <column Name="SupplierId" DataType="Link" Description="Supplier" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.Supplier" />
+        <column Name="CustomerId" DataType="Link" Description="Customer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.Customer" />
+        <column Name="ReceivingSiteId" DataType="Link" Description="Other" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.ReceivingSite" />
+        <column Name="CarrierId" DataType="Link" Description="Carrier" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.Carrier" />
+        <column Name="OtherId" DataType="Link" Description="Carrier" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.Other" />
+        <column Name="TransportId" DataType="Link" Description="Transport, delivery and sampled object" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.Transport" />
+        <column Name="CommentaryId" DataType="Link" Description="Commentary" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.Commentary" />
+
+        <column Name="MixtureIndication" DataType="Text" Description="MixtureIndication from MONST" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Number" DataType="Number" Description="Number from MONST" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampleSourceNumber" DataType="Number" Description="SampleSourceNumber from MONST" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SealNumber" DataType="Number" Description="SealNumber from MONST" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ErrorCode" DataType="Number" Description="Error code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ResearchNumber" DataType="Text" Description="Error code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PotassiumRequest" DataType="Boolean" Description="Request for potassium analysis" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+
+        <!-- 20150122: HG: LS-4220 added MuckCodeId field -->
+        <!-- KO: removed muckcode table it is the same as product kind -->
+        <!--<column Name="MuckCodeId" DataType="Link" Description="MuckCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.MuckCode" />-->
+        <!-- 20150123: HG: LS-4221 added ReceiverRegistrationNumber and SupplierRegistrationNumberId fields -->
+        <column Name="ReceivingSiteRegistrationNumberId" DataType="Link" Description="Registration Number storage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Roba.ReceivingSiteRegistrationNumber" />
+        <column Name="SupplierRegistrationNumberId" DataType="Link" Description="Registration Number storage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Roba.SupplierRegistrationNumber" />
+
+        <column Name="Exported" DataType="Boolean" Description="Is Exported" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+
+        <!-- 20170810: RdG: LS-15949 Nieuwe wetgeving mbt vaste mest roba -->
+        <column Name="SolidMuckRegistrationId" DataType="Link" Description="Solid Muck Registration" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Roba.SolidMuckRegistration" />
+      </columns>
+      <interfaces>
+        <!-- 20150227: HG: LS-4218 added ICompletable interface -->
+        <interface>ICompletable</interface>
+      </interfaces>
+    </table>
+    <table Name="VehicleRegistration" PluralName="VehicleRegistrations" Description="VehicleRegistrations" NameProperty="VehicleRegistration">
+      <columns>
+        <column Name="VehicleRegistrationId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="VehicleRegistration" DataType="Text" Description="VehicleRegistration" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CarrierId" DataType="Link" Description="Carrier" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.Carrier" />
+      </columns>
+    </table>
+    <table Name="TrailerRegistration" PluralName="TrailerRegistrations" Description="TrailerRegistrations" NameProperty="TrailerNumber">
+      <columns>
+        <column Name="TrailerRegistrationId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="TrailerNumber" DataType="Text" Description="TrailerNumber" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CarrierId" DataType="Link" Description="Carrier" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.Carrier" />
+      </columns>
+    </table>
+    <table Name="ReceivingSiteRegistrationNumber" PluralName="ReceivingSiteRegistrationNumbers" Description="ReceivingSiteRegistrationNumbers" NameProperty="RegistrationNumber">
+      <columns>
+        <column Name="ReceivingSiteRegistrationNumberId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="RegistrationNumber" DataType="Number" Description="RegistrationNumber" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReceivingSiteId" DataType="Link" Description="ReceivingSite" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.ReceivingSite" />
+      </columns>
+    </table>
+    <table Name="SupplierRegistrationNumber" PluralName="SupplierRegistrationNumbers" Description="SupplierRegistrationNumbers" NameProperty="RegistrationNumber">
+      <columns>
+        <column Name="SupplierRegistrationNumberId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="RegistrationNumber" DataType="Number" Description="RegistrationNumber" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SupplierId" DataType="Link" Description="Supplier" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Roba.Supplier" />
+      </columns>
+    </table>
+    <!-- KO: removed muckcode table it is the same as product kind -->
+    <!-- 20150122: HG: LS-4220 added MuckCode entity -->
+    <!--<table Name="MuckCode" PluralName="MuckCodes" Description="MuckCodes" NameProperty="MuckCodeId">
+      <columns>
+        <column Name="MuckCodeId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="MuckCode1" DataType="Phrase" Description="Muck code1" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MuckCode2" DataType="Phrase" Description="Muck code2" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MuckCode3" DataType="Phrase" Description="Muck code3" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MuckCode4" DataType="Phrase" Description="Muck code4" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MuckCodePercentage1" DataType="Decimal" Description="Muck code1" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="100" />
+        <column Name="MuckCodePercentage2" DataType="Decimal" Description="Muck code2" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MuckCodePercentage3" DataType="Decimal" Description="Muck code3" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="MuckCodePercentage4" DataType="Decimal" Description="Muck code4" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>-->
+    <table Name="JournalCode" PluralName="JournalCodes" Description="Journal Code table" NameProperty="Code">
+      <columns>
+        <column Name="JournalCodeId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="Code" DataType="Text" Description="Journal Code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TestCategory" DataType="Phrase" Description="TestCategory Code" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="TestCategory" DefaultValue="Diversen" />
+        <column Name="VatTypeId" DataType="Link" Description="VatType the code is linked to" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="VatType" />
+      </columns>
+    </table>
+    <table Name="TestType" PluralName="TestTypes" Description="Test type table" NameProperty="Name">
+      <columns>
+        <column Name="OnLabel" DataType="Boolean" Description="TestType printed on label" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" DefaultValue="0" />
+        <column Name="LabelText" DataType="Text" Description="Text Printed on the labels" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" />
+        <!-- 2015-01-02: KO: Added for roba financials-->
+        <column Name="TestCategory" DataType="Phrase" Description="Test Category" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" Phrase="TestCategory" DefaultValue="Diversen" />
+        <!-- 2016-12-01: KO: LS-11632 Roba onlyinclude duplo tests for forfaitair samples with lowweight -->
+        <column Name="UnanalysableForQ" DataType="Boolean" Description="Unanalysable according to Q" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+      </columns>
+    </table>
+
+    <!-- 2015-12-16: KO: Added for as required on reporting -->
+    <table Name="Sample">
+      <columns>
+        <column Name="MixDate" DataType="Date" Description="Timestamp the sample was mixed" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <!-- 20160404: KO: LS-8278 Roba: Nieuwe wet en regelgeving afhandeling dierlijk mest -->
+        <column Name="UnanalysableForQ" DataType="Boolean" Description="Unanalysable according to Q" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ForfaitairSample" DataType="Boolean" Description="Forfaiteir sample, no actual sample material available" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DefaultDilutionMuck" DataType="Number" Description="DefaultDilutionMuck" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <!-- 20160404: KO: LS-8278 Roba: Nieuwe wet en regelgeving afhandeling dierlijk mest -->
+    <table Name="ForfaitairMuckResult" PluralName="ForfaitairMuckResults" Description="Forfaitaire Muck Result" NameProperty="ProductCode">
+      <columns>
+        <column Name="ForfaitaireMuckResultId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="ProductCode" DataType="Number" Description="ProductCode" IsPrimaryKey="false" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="KgPhosphate" DataType="Decimal" Description="Kg phosphate" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="KgNitrate" DataType="Decimal" Description="Kg nitrate" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <!-- 20170810: RdG: LS-15949 Nieuwe wetgeving mbt vaste mest roba -->
+    <table Name="SolidMuckRegistration" PluralName="SolidMuckRegistrations" Description="Solid Muck Registration" NameProperty="SolidMuckRegistrationId">
+      <columns>
+        <column Name="SolidMuckRegistrationId" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="OMOCode" DataType="Text" Description="Code Onafhankelijke Monsternemende Organisatie" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BatchNumber" DataType="Text" Description="Batch number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Volume" DataType="Number" Description="Estimated volume" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SamplingDate" DataType="Date" Description="Sampling date" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="Test" >
+      <columns>
+        <column Name="ExtraTest" DataType="Boolean" Description="ExtraTest" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" DefaultValue="0" />
+      </columns>
+    </table>
+    <!-- KO : Add authorizable to TEST entity-->
+    <table Name="Test">
+      <interfaces>
+        <interface>IAuthorisable</interface>
+      </interfaces>
+    </table>
+
+    <table Name="OrderType">
+      <columns>
+        <column Name="Code" DataType="Text" Description="Code used for factuurnumber generation." IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="45" />
+      </columns>
+    </table>
+  </tables>
+  <phrases>
+    <phrase Name="Btw">
+      <phraseItems>
+        <phraseItem Value="None" Text="None" NL="Geen" />
+        <phraseItem Value="Low" Text="Low" NL="Laag" />
+        <phraseItem Value="High" Text="High" NL="In Hoog" />
+      </phraseItems>
+    </phrase>
+
+    <!-- 2015-01-02: KO: Added for roba financials-->
+    <phrase Name="TestCategory">
+      <phraseItems>
+        <phraseItem Value="Diversen" Text="Other" NL="Diversen" />
+        <phraseItem Value="DrinkWater" Text="Drinking-Water" NL="Drinkwater" />
+        <phraseItem Value="Micro" Text="Micro" NL="Micro" />
+        <phraseItem Value="Levensmiddel" Text="Nutritional" NL="Levensmiddel" />
+        <phraseItem Value="Nematologie" Text="Nematolgy" NL="Nematologie" />
+        <phraseItem Value="Bodem" Text="Soil" NL="Bodem" />
+        <phraseItem Value="Veevoeding" Text="Catlefood" NL="Veevoeding" />
+        <phraseItem Value="Mest" Text="Manure" NL="Mest" />
+        <phraseItem Value="CVWater" Text="Boiler-Water" NL="CV-water" />
+      </phraseItems>
+    </phrase>
+
+    <phrase Name="DeviceTaskType" NoEnumeration="true">
+      <phraseItems>
+        <phraseItem Value="iVention.Roba.Windows.DeviceTasks.MultiverseDeviceTask" Text="MultiverseDeviceTask" NL="MultiverseDeviceTask" />
+      </phraseItems>
+    </phrase>
+
+    <phrase Name="ExportTypeVDM">
+      <phraseItems>
+        <phraseItem Value="VDMClient" Text="VDMClient" NL="VDMClient" />
+        <phraseItem Value="Mimis" Text="Rovecom/Mimis" NL="Rovecom/Mimis" />
+        <phraseItem Value="VDMAdmin" Text="VDMAdmin" NL="VDMAdmin" />
+        <phraseItem Value="Agrotel" Text="AgrotTel/AgroIT" NL="AgrotTel/AgroIT" />
+        <phraseItem Value="None" Text="None" NL="Geen Export" />
+      </phraseItems>
+    </phrase>
+    <phrase Name="FileProcessorType">
+      <phraseItems>
+        <phraseItem Value="VDM" Text="VDM" NL="VDM" />
+        <phraseItem Value="Mimis" Text="Mimis" NL="Mimis" />
+        <phraseItem Value="Agrotel" Text="Agrotel" NL="Agrotel" />
+      </phraseItems>
+    </phrase>
+
+    <phrase Name="EntityEventType">
+      <phraseItems>
+        <phraseItem Value="UpdateTransportDocumentResults" Text="UpdateTransportDocumentResults" NL="UpdateTransportDocumentResults" EN="UpdateTransportDocumentResults" />
+      </phraseItems>
+    </phrase>
+  </phrases>
+
+  <modules>
+    <module Name="VDMModule" Type="Roba">
+      <entityPages>
+        <entityPage Entity="Sample" Name="VDM" />
+      </entityPages>
+    </module>
+  </modules>
+  <queries>
+    <!--20150123: HG: LS-4221 added VDM_SelectSupplierRegistrationNumber and VDM_SelectCustomerRegistrationNumber -->
+    <query Name="VDM_SelectSupplierRegistrationNumber">
+      <Statement>  record.SupplierId == CurrentRecord.SupplierId </Statement>
+      <Entity>RobaSupplierRegistrationNumber</Entity>
+    </query>
+    <query Name="VDM_SelectReceivingSiteRegistrationNumber">
+      <Statement>record.ReceivingSiteId == CurrentRecord.ReceivingSiteId </Statement>
+      <Entity>RobaReceivingSiteRegistrationNumber</Entity>
+    </query>
+    <!--20160921: KO: LS-10218 Kenteken op VDM-->
+    <query Name="VDM_SelectVehicleRegistration">
+      <Statement>_p0.Contains(record.CarrierId)</Statement>
+      <Entity>RobaVehicleRegistration</Entity>
+    </query>
+    <query Name="VDM_SelectTrailerRegistration">
+      <Statement>_p0.Contains(record.CarrierId)</Statement>
+      <Entity>RobaTrailerRegistration</Entity>
+    </query>
+  </queries>
+</schema>

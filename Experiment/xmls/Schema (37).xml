@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="carso" Prefix="carso">
+ <tables>
+    <table Name="Client">
+      <columns>
+        <!-- Larebron -->
+        <column Name="AdressComp" DataType="Text" Description="Adress 2" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ProfCategory" DataType="Phrase" Description="Professional category" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CodeComptable" DataType="Text" Description="Code comptable" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PreviousLimsId" DataType="Text" Description="Id in the previous Lims" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CommercialId" DataType="Link" Description="User from service commercial" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Siret" DataType="Text" Description="Siret number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Fax" DataType="Text" Description="Fax number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CollectiveInvoice" DataType="Phrase" Description="Fax number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PaymentCondition" DataType="Phrase" Description="Payment condition" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="VATnumber" DataType="Text" Description="VATnumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="ClientContact">
+      <columns>
+        <column Name="Initials" DataType="Text" Description="Initials" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="FirstName" DataType="Text" Description="FirstName" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LastName" DataType="Text" Description="LastName" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Active" DataType="Boolean" Description="Active" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CountryId" DataType="Link" Description="Country" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Country"/>
+        <column Name="UserId" DataType="Link" Description="UserId" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Civility" DataType="Phrase" Description="Civility" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Function" DataType="Text" Description="Contact function" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReceiveInvoice" DataType="Boolean" Description="Allowed to receive invoices" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReceiveCertificat" DataType="Boolean" Description="Allowed to receive invoices" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ReceiveResultAlert" DataType="Boolean" Description="Allowed to receive non conformity alert" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		  </columns>
+    </table>
+    
+    <table Name="Project"> <!-- Convention / Commande -->
+      <columns>
+        <column Name="ClientId" DataType="Link" Description="Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Client"/>
+      </columns>
+    </table>
+
+    <table Name="Product"> <!-- Product : will be use to group several order and share administrative information -->
+      <columns>
+
+         <column Name="Marque" DataType="Text" Description="Marque" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+	  <table Name="Order"> <!-- Real Sample : will be use to register sample by using the ordermodule ability (limit test selection to current sampletype -->
+      <columns>
+        <column Name="BarCode" DataType="Text" Description="BarCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Packaging" DataType="Text" Description="Packaging" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Format" DataType="Text" Description="Format" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StartDate" DataType="Date" Description="StartDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="EndDate" DataType="Date" Description="EndDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PickingCode" DataType="Text" Description="Month, Week... For picking" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" /> 
+        <column Name="PickingCountry" DataType="Phrase" Description="Picking country ISO 3" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PickingLocationId" DataType="Link" Description="Location pf the picking" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+        <column Name="CommentOnReport" DataType="Text" Description="CommentOnReport" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+		    <column Name="ProductId" DataType="Link" Description="Product" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Product" />
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampleExternalID" DataType="Text" Description="Sample ID from customer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="LocationId" DataType="Link" Description="Location Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+        <column Name="ResultExpectedDate" DataType="Date" Description="Date expected for results" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ExpiryDate" DataType="Date" Description="ExpiryDate" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Provider" DataType="Text" Description="Provider" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />    
+        <column Name="Marque" DataType="Text" Description="Marque" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="BatchNumber" DataType="Text" Description="BatchNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ItemCode" DataType="Text" Description="Item code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="HealthCode" DataType="Text" Description="Health Code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PackerCode" DataType="Text" Description="Packer code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="PackageCode" DataType="Text" Description="Package code" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TempTransport" DataType="Text" Description="Transport temperature" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="OrderStartDate" DataType="Date" Description="Date of start the sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="OrderStartVisa" DataType="Text" Description="Visa of tech starting the sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="RefVersion" DataType="Text" Description="Version, Millesime..." IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NbUVC_Bio" DataType="Number" Description="Number of UVC for microbiology" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />  
+        <column Name="NbUVC_Chi" DataType="Number" Description="Number of UVC for chemistry" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />  
+        <column Name="NbUVC_Total" DataType="Number" Description="Number of UVC for all analysis" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />  
+        <column Name="InfoPrel" DataType="Text" Description="Information for order..." IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	    </columns>
+    </table>
+
+    <table Name="Sample">
+      <columns>
+	<column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampleExternalID" DataType="Text" Description="Sample ID from customer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampleTestsDomain" DataType="Phrase" Description="Sample tests domain" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SamplePart" DataType="Text" Description="Part of the sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampleStartDate" DataType="Date" Description="Date of start the sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampleStartVisa" DataType="Text" Description="Visa of tech starting the sample" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SampleTestsCateg" DataType="Phrase" Description="Sample tests categories (J0, DLC, G2...) " IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns> 
+    </table>
+
+    <table Name="Test">
+      <columns>
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="NotEnoughSample" DataType="Boolean" Description="Not enough sample for the test" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <!--<column Name="PriorityId" DataType="Link" Description="Priority" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Priority" />-->
+        <column Name="TestStartDate" DataType="Date" Description="Date of start the test" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TestStartVisa" DataType="Text" Description="Visa of tech starting the test" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <!-- Need to be discussed with Rody
+        <column Name="NCCriticality" DataType="Phrase" Description="Criticality level of the non conformity" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        
+        -->
+	    </columns>
+      <interfaces>
+        <interface>IAuthorisable</interface>
+      </interfaces>
+    </table>
+
+    <table Name="SampleType">
+      <columns>
+        <column Name="Domain" DataType="Phrase" Description="Domain" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="Invoice" PluralName="Invoices" Description="Order Invoice" NameProperty="InvoiceId">
+      <columns>
+    	<column Name="WaitingInProgress" DataType="Boolean" Description="WaitingInProgress" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+	    <interfaces>
+        <interface>ICancelable</interface>
+      </interfaces>
+    </table>
+
+    <table Name="TestType">
+      <columns>
+        <column Name="Domain" DataType="Phrase" Description="Domain" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="StartCategory" DataType="Phrase" Description="Test start category" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TestCategContainerId" DataType="Link" Description="Test category Container" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="carso.TestCategContainer"/>
+        <column Name="NbrOfLabels" DataType="Number" Description="NbrOfLabels" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Accreditation" DataType="Boolean" Description="Accredited test" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Subcontracting" DataType="Boolean" Description="Subcontracted test" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CasNumber" DataType="Text" Description="CAS number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />     
+        <column Name="IncubationDays" DataType="Number" Description="Number of days of incubation" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />   
+        <column Name="TestStartList" DataType="Phrase" Description="Test start list" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="TestCategContainer" PluralName="TestCategContainer" Description="Test category and container link table" NameProperty="Name">
+        <columns>
+	<column Name="Name" DataType="Text" Description="Name" IsPrimaryKey="false" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="false" Size="450" Precision="0" Scale="0" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="TestCategContainerID" DataType="Number" Description="Primary key" IsPrimaryKey="true" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="Container" DataType="Phrase" Description="Container for storage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TestCategory" DataType="Text" Description="Test category" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TestSubCategory" DataType="Text" Description="Test subcategory" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <table Name="Method" PluralName="Methods" Description="Method table" NameProperty="Name">
+      <columns>
+        <column Name="Domain" DataType="Text" Description="Domain" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+	<table Name="User">
+      <columns>
+        <column   Name="Telephone" DataType="Text" Description="Telephone" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+	<table Name="Invoice" PluralName="Invoices" Description="Order Invoice" NameProperty="InvoiceId">
+		<columns>
+ 			<column Name="TotalPriceExclVAT" DataType="Text" Description="Price excluding VAT" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />   	
+		</columns>
+	</table>
+  </tables>
+  <phrases>
+  <!-- -->
+    <phrase Name="Civility" NoEnumeration="true">
+        <phraseItems>
+            <phraseItem Value="Mr." Text="Mr." FR="M." EN="Mr." NL="Dhr." OrderNumber="1"/>
+            <phraseItem Value="Ms." Text="Ms." FR="Mme." EN="Ms." NL="Mevr." OrderNumber="2"/>
+            <phraseItem Value="Miss" Text="Miss" FR="Mlle" EN="Miss" NL="Mevr." OrderNumber="3"/>
+        </phraseItems>
+    </phrase>
+
+    <phrase Name="CollectiveInvoice" NoEnumeration="true">
+        <phraseItems>
+            <phraseItem Value="Monthly" Text="Monthly" FR="Mensuelle" EN="Monthly" NL="Maandelijks" OrderNumber="1"/>
+            <phraseItem Value="Weekly" Text="Weekly" FR="Hebdomadaire" EN="Weekly" NL="Wekelijks" OrderNumber="2"/>
+        </phraseItems>
+    </phrase>
+
+    <phrase Name="PaymentCondition" NoEnumeration="true">
+        <phraseItems>
+            <phraseItem Value="CH 030 DF 00" Text="CH 030 DF 00" FR="CH 030 DF 00" EN="CH 030 DF 00" NL="CH 030 DF 00" OrderNumber="1"/>
+            <phraseItem Value="CH 000 DF 00" Text="CH 000 DF 00" FR="CH 000 DF 00" EN="CH 000 DF 00" NL="CH 000 DF 00" OrderNumber="2"/>
+            <phraseItem Value="CH 060 DF 00" Text="CH 060 DF 00" FR="CH 060 DF 00" EN="CH 060 DF 00" NL="CH 060 DF 00" OrderNumber="3"/>
+            <phraseItem Value="CH 045 FM 00" Text="CH 045 FM 00" FR="CH 045 FM 00" EN="CH 045 FM 00" NL="CH 045 FM 00" OrderNumber="4"/>
+            <phraseItem Value="CH 045 DF 00" Text="CH 045 DF 00" FR="CH 045 DF 00" EN="CH 045 DF 00" NL="CH 045 DF 00" OrderNumber="5"/>
+            <phraseItem Value="CH 030 FM 00" Text="CH 030 FM 00" FR="CH 030 FM 00" EN="CH 030 FM 00" NL="CH 030 FM 00" OrderNumber="6"/>
+        </phraseItems>
+    </phrase>
+
+    <phrase Name="SampleTestsDomain" NoEnumeration="true">
+        <phraseItems>
+            <phraseItem Value="C-" Text="C-" FR="C-" EN="C-" NL="C-" OrderNumber="1"/>
+            <phraseItem Value="-B" Text="-B" FR="-B" EN="-B" NL="-B" OrderNumber="2"/>
+            <phraseItem Value="CB" Text="CB" FR="CB" EN="CB" NL="CB" OrderNumber="3"/>
+        </phraseItems>
+    </phrase>
+
+      <phrase Name="Domain" NoEnumeration="true">
+        <phraseItems>
+            <phraseItem Value="BIO" Text="BIO" FR="BIO" EN="BIO" NL="BIO" OrderNumber="1"/>
+            <phraseItem Value="CHI" Text="CHI" FR="CHI" EN="CHI" NL="CHI" OrderNumber="2"/>
+            <phraseItem Value="FRA" Text="FRA" FR="FRA" EN="FRA" NL="FRA" OrderNumber="3"/>
+            <phraseItem Value="MAT" Text="MAT" FR="MAT" EN="MAT" NL="MAT" OrderNumber="4"/>
+            <phraseItem Value="FOR" Text="FOR" FR="FOR" EN="FOR" NL="FOR" OrderNumber="5"/>
+        </phraseItems>
+    </phrase>
+
+      <phrase Name="Container" NoEnumeration="true">
+        <phraseItems>
+            <phraseItem Value="F40bleu" Text="F40bleu" FR="BF40bleuIO" EN="F40bleu" NL="F40bleu" OrderNumber="1"/>
+            <phraseItem Value="P200blc" Text="P200blc" FR="P200blc" EN="P200blc" NL="P200blc" OrderNumber="2"/>
+        </phraseItems>
+    </phrase>
+
+      <phrase Name="StartCategory" NoEnumeration="true">
+        <phraseItems>
+            <phraseItem Value="DON" Text="DON" FR="DON" EN="DON" NL="DON" OrderNumber="1"/>
+            <phraseItem Value="FUMO" Text="FUMO" FR="FUMO" EN="FUMO" NL="FUMO" OrderNumber="2"/>
+        </phraseItems>
+    </phrase>
+
+      <phrase Name="TestStartList" NoEnumeration="true">
+        <phraseItems>
+            <phraseItem Value="ABVT TMA" Text="ABVT TMA" FR="ABVT TMA" EN="ABVT TMA" NL="ABVT TMA" OrderNumber="1"/>
+            <phraseItem Value="Ac oléique" Text="Ac oléique" FR="Ac oléique" EN="Ac oléique" NL="Ac oléique" OrderNumber="2"/>
+        </phraseItems>
+    </phrase>
+
+      <phrase Name="SampleTestsCateg" NoEnumeration="true">
+        <phraseItems>
+            <phraseItem Value="J0" Text="J0" FR="J0" EN="J0" NL="J0" OrderNumber="1"/>
+            <phraseItem Value="DLC" Text="DLC" FR="DLC" EN="DLC" NL="DLC" OrderNumber="2"/>
+        </phraseItems>
+    </phrase>
+
+  </phrases>
+</schema>

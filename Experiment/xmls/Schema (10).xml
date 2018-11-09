@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Paques" Prefix="Paques" UpgradeActionIndex="22">
+  <tables>
+    <!-- 20170222: KO:LS-14388 Accenture Paques Technical Proposal for integration sales force -->
+    <table Name="Client" PluralName="Clients" Description="Client table" NameProperty="Name">
+      <columns>
+        <column Name="ISAHNumber" DataType="Text" Description="ISAH Number Client" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SalesForceNumber" DataType="Text" Description="SalesForce Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <!-- Added Fields HA 20161117 LS-11472: Add Fields To Order Entity (Client Specific) -->
+    <!-- 20170222: KO:LS-14388 Accenture Paques Technical Proposal for integration sales force -->
+	<!-- 20171215 HA ADD NEW FIELDS TO DO -->
+    <table Name="Order" PluralName="Orders" Description="Order table" NameProperty="Name">
+      <columns>
+        <column Name="SalesForceProjectNumber" DataType="Text" Description="SalesForce Project Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ISAHProjectNumber" DataType="Text" Description="ISAH Project Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="Comments" DataType="Text" Description="Comments" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SalesForceNumber" DataType="Text" Description="SalesForce Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="OpportunityOwnerId" DataType="Link" Description="Opportunity Owner" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User"/>
+      </columns>
+    </table>
+
+    <!-- 20170222: KO:LS-14388 Accenture Paques Technical Proposal for integration sales force -->
+    <table Name="ClientContact" PluralName="ClientContacts" Description="ClientContact table" NameProperty="Name">
+      <columns>
+        <column Name="SalesForceNumber" DataType="Text" Description="SalesForce Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+    </table>
+
+    <!-- added fields HA 20161208 LS-11740 Add Location To Samples (Client Specific) -->
+    <table Name="Sample" PluralName="Samples" Description="Sample table" NameProperty="Name">
+      <columns>
+        <column Name="LocationId" DataType="Link" Description="Location Id" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+      </columns>
+      <interfaces>
+        <interface>IReceivable</interface>
+      </interfaces>
+    </table>
+	<!-- Added Fields HA 20170703 LS-15924 Add Clientspecific Fields To Projects-->
+    <table Name="Project" PluralName="Projects" Description="Project table" NameProperty="Name">
+      <columns>
+        <column Name="Operator1Id" DataType="Link" Description="Operator01" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Operator2Id" DataType="Link" Description="Operator02" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="Operator3Id" DataType="Link" Description="Operator03" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ReactorType" DataType="Text" Description="ReactorRtype" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="SalesForceProjectNumber" DataType="Text" Description="SalesForce Project Number" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	</columns>
+    </table>
+<!-- End of insert -->
+  </tables>
+</schema>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" Prefix="do" Name="DummenOrange" UpgradeActionIndex="27">
+  <tables>
+    <table Name="Rack">
+      <columns>
+        <column Name="MaterialId" DataType="Link" Description="Material" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Material" />
+      </columns>
+    </table>
+    <table Name="Test" PluralName="Tests" Description="tests" NameProperty="Name">
+      <columns>
+        <column Name="RackTypeId" DataType="Link" Description="RackType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="RackType" />
+      </columns>
+    </table>
+    <table Name="Order" PluralName="Orders" Description="Order table" NameProperty="Name">
+      <columns>
+        <column Name="DeliveryDate" DataType="Date" Description="Date order delivered" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DeliveryDelayDays" DataType="Number" Description="Days delivery is delayed" DefaultValue="0" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TrackingNumber" DataType="Text" Description="Tracking number n package" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="DeliveryCompany" DataType="Text" Description="Company that delivers package" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="TicketNumber" DataType="Text" Description="TicketNumber" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+      </columns>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>DeliveryDate</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="Sample" PluralName="Samples" Description="Sample table" NameProperty="Name">
+      <columns>
+        <column Name="LocationId" DataType="Link" Description="Location" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Location" />
+        <column Name="Variety" DataType="Text" Description="Crop variety" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="PedigreeItem" DataType="Text" Description="Crop pedrigreeitem" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="Sequence" DataType="Text" Description="Crop sequence" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="BreedingOperation" DataType="Text" Description="BreedingOperation" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="BreedingOperationType" DataType="Text" Description="BreedingOperationType" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="Plot" DataType="Text" Description="Plot" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="HistoricalCode" DataType="Text" Description="HistoricalCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+        <column Name="BiorebaCode" DataType="Text" Description="BiorebaCode" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+      </columns>
+      <interfaces>
+        <interface>IReceivable</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>LocationId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+    <table Name="RackTypeTestType" PluralName="RackTypeTestTypes" Description="Link between racktype and testtypes" NameProperty="RackTypeTestTypeId">
+      <columns>
+        <column Name="RackTypeTestTypeId" DataType="Number" Description="Primary Key" IsPrimaryKey="true" AllowNull="false" IsUnique="true" IsDiscriminator="false" IsIdentity="true" Size="0" Precision="0" Scale="0" />
+        <column Name="RackTypeId" DataType="Link" Description="Link to racktype" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="RackType" />
+        <column Name="TestTypeId" DataType="Link" Description="Link to TestType" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="TestType" />
+        <column Name="CreatedOn" DataType="Date" Description="Created on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="ModifiedOn" DataType="Date" Description="Modified on timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="GetDate()" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+        <column Name="CreatedById" DataType="Link" Description="User who created the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="ModifiedById" DataType="Link" Description="User who modified the record" IsPrimaryKey="false" AllowNull="false" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="User" />
+        <column Name="TimeStamp" DataType="Date" Description="Send from client timestamp" IsPrimaryKey="false" AllowNull="false" DefaultValue="" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+      </columns>
+      <interfaces>
+        <interface>IDeletable</interface>
+      </interfaces>
+      <indexes>
+        <index Unique="false">
+          <Columns>
+            <string>RackTypeId</string>
+          </Columns>
+        </index>
+        <index Unique="false">
+          <Columns>
+            <string>TestTypeId</string>
+          </Columns>
+        </index>
+      </indexes>
+    </table>
+  </tables>
+  <phrases>
+    <phrase Name="FileProcessorType">
+      <phraseItems>
+        <phraseItem Value="eBridaOrder" Text="eBridaOrder" NL="eBridaOrder" />
+      </phraseItems>
+    </phrase>
+  </phrases>
+</schema>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Nki" Prefix="Nki" UpgradeActionIndex="22">
+  <tables>
+	<table Name="ObservationTaskType" PluralName="ObservationTaskTypes" Description="ObservationTaskType table" NameProperty="Name">
+	      <columns>
+			<column Name="MaterialId" DataType="Link" Description="Material" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Material" />
+			<column Name="Vehicle" DataType="Phrase" Description="Vehicle" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+			 <column Name="Dose" DataType="Decimal" Description="Dose" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+			<column Name="DoseUnitId" DataType="Link" Description="Unit of Dosage" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Unit" />
+			<column Name="Schema" DataType="Phrase" Description="Hours required by labengineer" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+			<column Name="Route" DataType="Phrase"  Description="Caterogory of test" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+			<column Name="Volume" DataType="Decimal"  Description="Caterogory of test" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+			<column Name="VolumeUnitId" DataType="Link"  Description="Unit of volume" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="Unit" />
+			<column Name="Comment" DataType="Text"  Description="Comment" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+			<column Name="Type" DataType="Phrase"  Description="Type of task" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+		</columns>
+	</table>
+	<table Name="AnimalTreatmentGroup" PluralName="AnimalTreatmentGroups" Description="AnimalTreatmentGroup table" NameProperty="Name">
+	      <columns>
+			<column Name="Type" DataType="Phrase" Description="Type of treatmentgroup" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+			<column Name="CompareAgainstId" DataType="Link" Description="CompareAgainst treatmentgroup in statistic analysis" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" ReferenceTypeName="AnimalTreatmentGroup"/>
+			 <column Name="CellLine" DataType="Phrase" Description="Cellline injected" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+			<column Name="NumberOfCellsInjected" DataType="Decimal" Description="Number of cells injected" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+			<column Name="InjectionLocation" DataType="Phrase" Description="Location of injection" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+			<column Name="InjectionMatrix" DataType="Phrase"  Description="Injection matrix" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"/>
+		</columns>
+	</table>
+	<table Name="Experiment" PluralName="Experiments" Description="Experiment table" NameProperty="Name">
+	      <columns>
+			<column Name="Duration" DataType="Decimal" Description="Duration" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+			<column Name="DiscardAnimalTakeOut" DataType="Boolean" Description="Discard animal result after takeout in statistical analysis" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0" />
+	      </columns>
+	</table>
+	<table Name="SpecificationItem" PluralName="SpecificationItems" Description="SpecificationItem table" NameProperty="Name">
+	      <columns>
+			<column Name="ObservationTypeId" DataType="Link" Description="Duration" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  ReferenceTypeName="ObservationType" />
+		</columns>
+	</table>
+	<table Name="Animal" PluralName="Animals" Description="Animal table" NameProperty="Name">
+	      <columns>
+			<column Name="SpeciesId" DataType="Link" Description="Species" IsPrimaryKey="false" AllowNull="true" IsUnique="false" IsDiscriminator="false" IsIdentity="false" Size="0" Precision="0" Scale="0"  ReferenceTypeName="Species" />
+		</columns>
+	</table>
+  </tables>
+</schema>
+

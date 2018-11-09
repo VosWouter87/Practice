@@ -7,3 +7,12 @@ D:\projects\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.AssemblyInfoIn
 D:\projects\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.AssemblyInfo.cs
 D:\projects\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.dll
 D:\projects\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.pdb
+D:\projects\Practice\Experiment\CodeWars\bin\Debug\netstandard2.0\CodeWars.deps.json
+D:\projects\Practice\Experiment\CodeWars\bin\Debug\netstandard2.0\CodeWars.dll
+D:\projects\Practice\Experiment\CodeWars\bin\Debug\netstandard2.0\CodeWars.pdb
+D:\projects\Practice\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.csprojResolveAssemblyReference.cache
+D:\projects\Practice\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.csproj.CoreCompileInputs.cache
+D:\projects\Practice\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.AssemblyInfoInputs.cache
+D:\projects\Practice\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.AssemblyInfo.cs
+D:\projects\Practice\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.dll
+D:\projects\Practice\Experiment\CodeWars\obj\Debug\netstandard2.0\CodeWars.pdb
